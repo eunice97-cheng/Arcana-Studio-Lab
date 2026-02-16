@@ -7,372 +7,269 @@
     <title>Arcana Studio Labs</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Audiowide&family=Share+Tech+Mono&family=Orbitron:wght@400;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Share+Tech+Mono&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #020617;
             --text: #ffffff;
+            --text-dim: rgba(255, 255, 255, 0.4);
             --card-bg: rgba(255, 255, 255, 0.03);
             --border-glow: rgba(150, 150, 150, 0.1);
             --c-cyan: #06b6d4;
-            --c-gold: #ffea00;
-            --c-red: #ff003c;
-            --f-icon: rgba(255, 255, 255, 0.4);
-            --f-hover: #06b6d4;
+            --dynamic-text: #ffffff;
         }
 
         .light-mode {
-            --bg: #ffffff;
+            --bg: #f8fafc;
             --text: #0f172a;
+            --text-dim: #64748b;
             --card-bg: rgba(15, 23, 42, 0.05);
             --border-glow: rgba(15, 23, 42, 0.1);
-            --f-icon: #1e293b;
-            --f-hover: #1d4ed8;
             --c-cyan: #0369a1;
+            --dynamic-text: #0f172a;
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             background-color: var(--bg);
             color: var(--text);
             transition: background-color 0.4s ease, color 0.4s ease;
-            margin: 0;
             font-family: ui-sans-serif, system-ui, sans-serif;
             overflow-x: hidden;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        .brand-font {
-            font-family: 'Audiowide', cursive;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        .log-font {
-            font-family: 'Share Tech Mono', monospace;
-        }
-
-        .ops-font {
-            font-family: 'Orbitron', sans-serif;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
+        .brand-font { font-family: 'Audiowide', cursive; text-transform: uppercase; letter-spacing: 0.1em; }
+        .log-font { font-family: 'Share Tech Mono', monospace; }
+        .ops-font { font-family: 'Orbitron', sans-serif; letter-spacing: 0.05em; text-transform: uppercase; }
 
         #matrix-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            opacity: 0.25;
-            pointer-events: none;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0; opacity: 0.2; pointer-events: none;
         }
 
         .brand-title-gradient {
-            display: block;
-            width: 100%;
+            display: block; width: 100%;
             background: linear-gradient(to right, #4dfce6, #73a5ff, #ae80ff);
-            -webkit-background-clip: text;
-            background-clip: text;
+            -webkit-background-clip: text; background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-align: center;
-            font-size: 2.5rem !important;
-            font-weight: 700;
+            text-align: center; font-size: 2.6rem !important; font-weight: 700;
         }
 
         .control-circle {
-            width: 44px;
-            height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            border: 1px solid rgba(150, 150, 150, 0.2);
-            background: var(--card-bg);
-            transition: all 0.2s ease;
-            cursor: pointer;
-            color: var(--text);
+            width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; border: 1px solid rgba(150, 150, 150, 0.2);
+            background: var(--card-bg); transition: all 0.2s ease; cursor: pointer; color: var(--text);
         }
 
-        /* Toggle State Classes */
-        .btn-active-cyan {
-            border-color: var(--c-cyan) !important;
-            color: var(--c-cyan) !important;
-        }
-
-        .btn-inactive-red {
-            border-color: #ff003c !important;
-            color: #ff003c !important;
-        }
-
-        .btn-active-orange {
-            border-color: #f97316 !important;
-            color: #f97316 !important;
-        }
-
-        .footer-link {
-            color: var(--f-icon);
-            transition: color 0.2s ease;
-        }
-
-        .footer-link:hover {
-            color: var(--f-hover);
-        }
+        .btn-active-cyan { border-color: var(--c-cyan) !important; color: var(--c-cyan) !important; }
 
         .glass-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--border-glow);
-            border-radius: 1rem;
-            position: relative;
-            z-index: 10;
+            background: var(--card-bg); backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glow); border-radius: 1rem;
+            position: relative; z-index: 10;
         }
 
-        .main-container {
-            width: 100%;
-            max-width: 80rem;
-            margin: 0 auto;
-            padding: 0 1.5rem;
+        .main-container { width: 100%; max-width: 80rem; margin: 0 auto; padding: 0 1.5rem; }
+
+        .card-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+        @media (min-width: 768px) { .card-grid { grid-template-columns: repeat(2, 1fr); } }
+        
+        .card { padding: 1.5rem; height: 180px; display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
+        .node-inner { display: flex; flex-direction: row; gap: 1.5rem; align-items: center; height: 100%; }
+        
+        .node-logo { 
+            width: 110px; height: 110px; flex-shrink: 0; object-fit: contain; 
+            transition: opacity 0.3s ease;
         }
+        
+        .node-text { flex-grow: 1; }
 
-        @keyframes status-pulse {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.5;
-            }
+        .operations-title {
+            font-family: 'Share Tech Mono', monospace; font-size: 10px; font-weight: 900; 
+            letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; color: var(--text-dim);
         }
+        
+        .operations-list { flex-grow: 1; overflow-y: auto; padding-right: 0.5rem; }
+        
+        @keyframes status-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .status-pulse { animation: status-pulse 2s infinite; }
 
-        .status-pulse {
-            animation: status-pulse 2s infinite;
-        }
+        #tagline-text { color: var(--dynamic-text); }
+        #tagline-text::after { content: "|"; animation: blink 1s step-end infinite; color: var(--c-cyan); }
+        @keyframes blink { from, to { opacity: 1; } 50% { opacity: 0; } }
     </style>
 </head>
 
-<body class="flex flex-col">
+<body>
     <canvas id="matrix-canvas"></canvas>
 
     <header class="w-full py-6 relative z-20">
         <div class="main-container flex justify-between items-center">
-            <div class="text-[10px] font-bold tracking-[0.4em] uppercase log-font" style="color: var(--f-icon);">Node:
-                Arcana_Core</div>
+            <div class="text-[10px] font-bold tracking-[0.4em] uppercase log-font" style="color: var(--text-dim);">Node: Arcana_Core</div>
             <div class="flex space-x-3">
-                <button id="matrixToggle" class="control-circle btn-active-cyan"><i
-                        class="fa-solid fa-hat-wizard"></i></button>
-                <button id="audioToggle" class="control-circle"><i id="audioIcon"
-                        class="fa-solid fa-volume-xmark"></i></button>
+                <button id="matrixToggle" class="control-circle btn-active-cyan"><i class="fa-solid fa-hat-wizard"></i></button>
+                <button id="audioToggle" class="control-circle"><i id="audioIcon" class="fa-solid fa-volume-xmark"></i></button>
                 <button id="themeToggle" class="control-circle"><i id="themeIcon" class="fa-solid fa-moon"></i></button>
             </div>
         </div>
     </header>
 
     <main class="flex-grow flex flex-col items-center relative z-10 px-6">
-        <div class="mb-10 mt-2">
-            <img id="mainLogo" src="logo.png" alt="Arcana Logo" class="w-56 h-56 object-contain">
+        <div class="mb-4 mt-2">
+            <img id="mainLogo" src="logo.png" alt="Arcana Logo" class="w-44 h-44 object-contain transition-opacity duration-300" onerror="handleImageError(this)">
         </div>
 
-        <div class="max-w-4xl w-full mb-16 text-center">
+        <div class="max-w-4xl w-full mb-10 text-center">
             <h1 class="brand-font brand-title-gradient">Arcana Studio Labs</h1>
-            <p class="mt-4 text-[10px] md:text-xs tracking-[0.8em] font-bold uppercase" style="color: var(--c-cyan);">
-                Digital Alchemy & Applied Meta-Physics</p>
+            <p class="mt-4 text-[10px] md:text-xs tracking-[0.3em] font-bold uppercase log-font" style="color: var(--c-cyan); height: 1.5em;">
+                <span style="color: var(--text-dim);">SYSTEM:</span> <span id="tagline-text"></span>
+            </p>
         </div>
 
-        <div class="main-container mb-24">
-            <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-                <a href="https://lumenpedia.arcanastudiolabs.com/"
-                    class="glass-card p-8 group flex flex-col md:flex-row gap-8 items-center md:items-start transition-transform hover:scale-[1.01]">
-                    <div class="flex-shrink-0">
-                        <img src="lumen-logo.png" alt="Lumenpedia"
-                            class="w-32 h-auto opacity-80 group-hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-grow text-center md:text-left">
-                        <div class="flex justify-between items-start mb-4">
-                            <span
-                                class="bg-cyan-500/10 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest log-font"
-                                style="color: var(--c-cyan);">Active Node</span>
-                            <span
-                                class="hidden md:block text-xl group-hover:translate-x-2 transition-transform opacity-20">→</span>
-                        </div>
-                        <h2 class="text-2xl font-bold mb-3 brand-font">Lumenpedia</h2>
-                        <p class="text-sm opacity-60 leading-relaxed">Jade Dynasty Lumen technical documentation and
-                            player tools.</p>
-                    </div>
-                </a>
-
-                <a href="http://codex-witch.arcanastudiolabs.com"
-                    class="glass-card p-8 group flex flex-col md:flex-row gap-8 items-center md:items-start transition-transform hover:scale-[1.01]">
-                    <div class="flex-shrink-0">
-                        <img src="logo2.jpg" alt="The Codex of the Witch"
-                            class="w-32 h-auto opacity-80 group-hover:opacity-100 transition-opacity">
-                    </div>
-                    <div class="flex-grow text-center md:text-left">
-                        <div class="flex justify-between items-start mb-4">
-                            <span
-                                class="bg-cyan-500/10 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest log-font"
-                                style="color: var(--c-cyan);">Active Node</span>
-                            <span
-                                class="hidden md:block text-xl group-hover:translate-x-2 transition-transform opacity-20">→</span>
-                        </div>
-                        <h2 class="text-2xl font-bold mb-3 brand-font">The Codex of the Witch</h2>
-                        <p class="text-sm opacity-60 leading-relaxed">Every soul has a map. Few ever learn to read it.
-                        </p>
-                    </div>
-                </a>
-
-
-                <div class="glass-card p-8">
-                    <h3 class="text-[10px] font-black tracking-widest uppercase mb-6 log-font"
-                        style="color: var(--f-icon);">Recent Operations</h3>
-                    <div class="space-y-5 text-[11px] ops-font">
-                        <div class="flex justify-between items-center border-b border-black/5 dark:border-white/5 pb-3">
-                            <span class="opacity-70">The Codex of the Witch – Node Registration</span>
-                            <span class="opacity-50 italic log-font">02.12.2026</span>
-                        </div>
-                        <div class="flex justify-between items-center border-b border-black/5 dark:border-white/5 pb-3">
-                            <span class="opacity-70">Visual ID Sync</span>
-                            <span class="opacity-50 italic log-font">02.11.2026</span>
-                        </div>
-                        <div class="flex justify-between items-center border-b border-black/5 dark:border-white/5 pb-3">
-                            <span class="opacity-70">Lumenpedia Deployment</span>
-                            <span class="opacity-50 italic log-font">01.25.2026</span>
-                        </div>
-                        <div class="flex justify-between items-center pt-1">
-                            <span class="opacity-70 tracking-widest">Runic Engine</span>
-                            <span id="engineStatus" class="font-bold tracking-widest status-pulse"
-                                style="color: var(--c-cyan);">STABLE</span>
+        <div class="main-container mb-24 w-full">
+            <div class="card-grid">
+                <div class="glass-card card">
+                    <div class="node-inner">
+                        <img id="lumenLogo" src="lumen-logo.png" alt="Lumenpedia" class="node-logo" onerror="handleImageError(this)">
+                        <div class="node-text">
+                            <span class="text-[10px] font-bold uppercase tracking-widest log-font mb-1" style="color: var(--c-cyan);">Database & Strategy Engine</span>
+                            <h2 class="text-xl font-bold brand-font mb-1">Lumenpedia</h2>
+                            <p class="text-sm opacity-80 leading-snug">Jade Dynasty technical documentation and player tools.</p>
                         </div>
                     </div>
                 </div>
-            </section>
+
+                <div class="glass-card card">
+                    <div class="node-inner">
+                        <img id="codexLogo" src="logo2.jpg" alt="Codex" class="node-logo" onerror="handleImageError(this)">
+                        <div class="node-text">
+                            <span class="text-[10px] font-bold uppercase tracking-widest log-font mb-1" style="color: var(--c-cyan);">Personal Cartography & Soul-Maps</span>
+                            <h2 class="text-xl font-bold brand-font mb-1">The Codex of The Witch</h2>
+                            <p class="text-sm opacity-80 leading-snug">Every soul has a map. Few ever learn to read it.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card card">
+                    <div class="node-inner">
+                        <img id="fireHorseLogo" src="logo4.png" alt="Fire Horse" class="node-logo" onerror="handleImageError(this)">
+                        <div class="node-text">
+                            <span class="text-[10px] font-bold uppercase tracking-widest log-font mb-1" style="color: var(--c-cyan);">Celestial Flow & Temporal Optimization</span>
+                            <h2 class="text-xl font-bold brand-font mb-1">2026 Fire Horse</h2>
+                            <p class="text-sm opacity-80 leading-snug">Comprehensive Feng Shui and Fortune Guide for 2026.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card card">
+                    <h3 class="operations-title">Recent Operations</h3>
+                    <div class="operations-list">
+                        <div class="space-y-4 text-[10px] ops-font">
+                            <div class="flex justify-between items-center border-b border-black/5 dark:border-white/5 pb-2">
+                                <span class="opacity-70">LUMENPEDIA_PATCH_SYNC</span>
+                                <span class="opacity-40 log-font">02.16</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-black/5 dark:border-white/5 pb-2">
+                                <span class="opacity-70">FIRE_HORSE_FLOW_READY</span>
+                                <span class="opacity-40 log-font">02.14</span>
+                            </div>
+                            <div class="flex justify-between items-center pt-1">
+                                <span class="opacity-70 tracking-widest">ENGINE STATUS</span>
+                                <span class="font-bold status-pulse" style="color: var(--c-cyan);">STABLE</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 
-    <footer class="w-full border-t border-black/5 dark:border-white/5 py-10 relative z-20">
-        <div
-            class="main-container flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold tracking-[0.2em] uppercase">
-            <p class="footer-link">© 2026 ARCANA STUDIO LABS</p>
-            <div class="flex space-x-8 text-lg">
-                <a href="#" class="footer-link"><i class="fa-brands fa-discord"></i></a>
-                <a href="#" class="footer-link"><i class="fa-brands fa-github"></i></a>
-                <a href="mailto:contact@arcanastudiolabs.com" class="footer-link"><i
-                        class="fa-solid fa-envelope"></i></a>
+    <footer class="w-full border-t border-black/10 dark:border-white/5 py-10 relative z-20">
+        <div class="main-container flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold tracking-[0.2em] uppercase">
+            <p>© 2026 ARCANA STUDIO LABS</p>
+            <div class="flex space-x-8 text-lg" style="color: var(--f-icon);">
+                <a href="#"><i class="fa-brands fa-discord"></i></a>
+                <a href="#"><i class="fa-brands fa-github"></i></a>
+                <a href="mailto:contact@arcanastudiolabs.com"><i class="fa-solid fa-envelope"></i></a>
             </div>
         </div>
     </footer>
 
-    <audio id="bgAudio" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3"></audio>
-
     <script>
-        const canvas = document.getElementById('matrix-canvas');
-        const ctx = canvas.getContext('2d');
-        const engineStatus = document.getElementById('engineStatus');
-        const mainLogo = document.getElementById('mainLogo');
-        const matrixBtn = document.getElementById('matrixToggle');
-        const audioBtn = document.getElementById('audioToggle');
-        const themeBtn = document.getElementById('themeToggle');
+        // TYPEWRITER ENGINE
+        const textElement = document.getElementById('tagline-text');
+        const phrases = [
+            "LUMENPEDIA_PROTOCOLS // MASTERING THE VIRTUAL",
+            "THE_CODEX_OF_THE_WITCH // DECODING THE SOUL",
+            "FIRE_HORSE_2026 // OPTIMIZING CELESTIAL FLOW",
+            "ARCANA_STUDIO // MASTERING THE MECHANICS"
+        ];
+        let phraseIdx = 0, charIdx = 0, isDeleting = false;
 
-        let matrixActive = true;
-        let matrixInterval;
-
-        const darkBase = ['#3b82f6', '#06b6d4', '#14b8a6', '#a855f7'];
-        const lightBase = ['#1d4ed8', '#0891b2', '#0d9488', '#7e22ce'];
-        const glitchColors = ['#ffea00', '#ff003c'];
-
-        const characters = 'ᚠᚢᚦᚨᚱᚲᚷᚹᚺᚻᚼᚽᚾᚿᛀᛁᛂᛃᛄᛅᛆᛇᛈᛉᛊᛋᛌᛍᛎᛏᛐᛑᛒᛓᛔᛕᛖᛗᛘᛙᛚᛛᛜᛝᛞᛟ';
-        const fontSize = 18;
-        let columns, drops;
-
-        function setCanvasSize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            columns = Math.floor(canvas.width / fontSize);
-            drops = Array(columns).fill(1);
+        function type() {
+            const current = phrases[phraseIdx];
+            textElement.innerText = isDeleting ? current.substring(0, charIdx - 1) : current.substring(0, charIdx + 1);
+            if (!isDeleting) {
+                charIdx++;
+                if (charIdx === current.length) { isDeleting = true; setTimeout(type, 2500); return; }
+            } else {
+                charIdx--;
+                if (charIdx === 0) { isDeleting = false; phraseIdx = (phraseIdx + 1) % phrases.length; }
+            }
+            setTimeout(type, isDeleting ? 50 : 100);
         }
 
-        function drawMatrix() {
-            const isLight = document.body.classList.contains('light-mode');
-            ctx.fillStyle = isLight ? 'rgba(255, 255, 255, 0.15)' : 'rgba(2, 6, 23, 0.15)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            const activeBase = isLight ? lightBase : darkBase;
+        // IMAGE FALLBACK HANDLER
+        function handleImageError(image) {
+            if (image.src.endsWith(".png")) {
+                image.src = image.src.replace(".png", ".jpg");
+            } else if (image.src.endsWith(".jpg")) {
+                // Fallback to a placeholder if even JPG fails
+                image.style.opacity = "0.2";
+            }
+        }
 
-            for (let i = 0; i < drops.length; i++) {
-                const text = characters.charAt(Math.floor(Math.random() * characters.length));
-                const rand = Math.random();
-                ctx.shadowBlur = 0;
-                if (rand > 0.985) {
-                    ctx.fillStyle = glitchColors[1];
-                    ctx.shadowBlur = 15; ctx.shadowColor = glitchColors[1];
-                } else if (rand > 0.96) {
-                    ctx.fillStyle = glitchColors[0];
-                    ctx.shadowBlur = 15; ctx.shadowColor = glitchColors[0];
-                } else {
-                    ctx.fillStyle = activeBase[i % activeBase.length];
-                }
-                ctx.font = fontSize + 'px "Courier New", monospace';
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+        // THEME & LOGO LOGIC
+        const themeBtn = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const mainLogo = document.getElementById('mainLogo');
+        const lumenLogo = document.getElementById('lumenLogo');
+        const codexLogo = document.getElementById('codexLogo');
+        const fireHorseLogo = document.getElementById('fireHorseLogo');
+
+        themeBtn.onclick = () => {
+            const isLight = document.body.classList.toggle('light-mode');
+            themeIcon.className = isLight ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+            
+            // Primary attempts (will trigger handleImageError if not found)
+            mainLogo.src = isLight ? 'logo1.png' : 'logo.png';
+            lumenLogo.src = isLight ? 'logo3.png' : 'lumen-logo.png';
+            codexLogo.src = isLight ? 'logo3.png' : 'logo2.jpg'; 
+            fireHorseLogo.src = isLight ? 'logo5.png' : 'logo4.png';
+        };
+
+        // MATRIX
+        const canvas = document.getElementById('matrix-canvas'), ctx = canvas.getContext('2d');
+        let columns, drops;
+        function setSize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; columns = Math.floor(canvas.width/18); drops = Array(columns).fill(1); }
+        function draw() {
+            const isL = document.body.classList.contains('light-mode');
+            ctx.fillStyle = isL ? 'rgba(248, 250, 252, 0.15)' : 'rgba(2, 6, 23, 0.15)';
+            ctx.fillRect(0,0,canvas.width,canvas.height);
+            ctx.font = '18px monospace';
+            for(let i=0; i<drops.length; i++) {
+                ctx.fillStyle = isL ? '#0369a1' : '#06b6d4';
+                ctx.fillText('ᚠᚢᚦᚨᚱᚲᚷᚹᚺᚻᚼᚽᚾᚿ'[Math.floor(Math.random()*14)], i*18, drops[i]*18);
+                if(drops[i]*18 > canvas.height && Math.random() > 0.975) drops[i] = 0;
                 drops[i]++;
             }
         }
-
-        setCanvasSize();
-        matrixInterval = setInterval(drawMatrix, 50);
-
-        function getCyanColor() {
-            return document.body.classList.contains('light-mode') ? '#0369a1' : '#06b6d4';
-        }
-
-        matrixBtn.onclick = () => {
-            matrixActive = !matrixActive;
-            if (matrixActive) {
-                matrixBtn.classList.replace('btn-inactive-red', 'btn-active-cyan');
-                engineStatus.innerText = 'RECALIBRATING...'; engineStatus.style.color = '#ffea00';
-                setTimeout(() => {
-                    engineStatus.innerText = 'STABLE';
-                    engineStatus.style.color = getCyanColor();
-                    matrixInterval = setInterval(drawMatrix, 50);
-                }, 1500);
-            } else {
-                matrixBtn.classList.replace('btn-active-cyan', 'btn-inactive-red');
-                clearInterval(matrixInterval); ctx.clearRect(0, 0, canvas.width, canvas.height);
-                engineStatus.innerText = 'OFFLINE'; engineStatus.style.color = '#ff003c';
-            }
-        };
-
-        themeBtn.onclick = () => {
-            document.body.classList.toggle('light-mode');
-            const icon = document.getElementById('themeIcon');
-            if (document.body.classList.contains('light-mode')) {
-                themeBtn.classList.add('btn-active-orange');
-                icon.classList.replace('fa-moon', 'fa-sun'); mainLogo.src = 'logo1.png';
-                if (matrixActive) engineStatus.style.color = '#0369a1';
-            } else {
-                themeBtn.classList.remove('btn-active-orange');
-                icon.classList.replace('fa-sun', 'fa-moon'); mainLogo.src = 'logo.png';
-                if (matrixActive) engineStatus.style.color = '#06b6d4';
-            }
-        };
-
-        const bgAudio = document.getElementById('bgAudio');
-        audioBtn.onclick = () => {
-            const icon = document.getElementById('audioIcon');
-            if (bgAudio.paused) {
-                bgAudio.play(); audioBtn.classList.add('btn-active-cyan');
-                icon.classList.replace('fa-volume-xmark', 'fa-volume-high');
-            } else {
-                bgAudio.pause(); audioBtn.classList.remove('btn-active-cyan');
-                icon.classList.replace('fa-volume-high', 'fa-volume-xmark');
-            }
-        };
-        window.onresize = setCanvasSize;
+        setSize(); setInterval(draw, 50); window.onresize = setSize;
+        document.addEventListener('DOMContentLoaded', type);
     </script>
 </body>
-
 </html>
