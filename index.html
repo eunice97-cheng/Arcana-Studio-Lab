@@ -71,6 +71,13 @@
             background: var(--card-bg); backdrop-filter: blur(20px);
             border: 1px solid var(--border-glow); border-radius: 1rem;
             position: relative; z-index: 10;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--c-cyan);
         }
 
         .main-container { width: 100%; max-width: 80rem; margin: 0 auto; padding: 0 1.5rem; }
@@ -132,7 +139,8 @@
 
         <div class="main-container mb-24 w-full">
             <div class="card-grid">
-                <div class="glass-card card">
+                <!-- Lumenpedia Card - Links to https://lumenpedia.arcanastudiolabs.com/ -->
+                <div class="glass-card card" onclick="window.open('https://lumenpedia.arcanastudiolabs.com/', '_blank')">
                     <div class="node-inner">
                         <img id="lumenLogo" src="lumen-logo.png" alt="Lumenpedia" class="node-logo" onerror="handleImageError(this)">
                         <div class="node-text">
@@ -143,7 +151,8 @@
                     </div>
                 </div>
 
-                <div class="glass-card card">
+                <!-- The Codex of The Witch Card - Links to https://codex-witch.arcanastudiolabs.com/ -->
+                <div class="glass-card card" onclick="window.open('https://codex-witch.arcanastudiolabs.com/', '_blank')">
                     <div class="node-inner">
                         <img id="codexLogo" src="logo2.jpg" alt="Codex" class="node-logo" onerror="handleImageError(this)">
                         <div class="node-text">
@@ -154,7 +163,8 @@
                     </div>
                 </div>
 
-                <div class="glass-card card">
+                <!-- 2026 Fire Horse Card - Links to https://fengshui-witch.arcanastudiolabs.com/ -->
+                <div class="glass-card card" onclick="window.open('https://fengshui-witch.arcanastudiolabs.com/', '_blank')">
                     <div class="node-inner">
                         <img id="fireHorseLogo" src="logo4.png" alt="Fire Horse" class="node-logo" onerror="handleImageError(this)">
                         <div class="node-text">
@@ -165,6 +175,7 @@
                     </div>
                 </div>
 
+                <!-- Operations Card (Not clickable) -->
                 <div class="glass-card card">
                     <h3 class="operations-title">Recent Operations</h3>
                     <div class="operations-list">
@@ -192,8 +203,8 @@
         <div class="main-container flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold tracking-[0.2em] uppercase">
             <p>© 2026 ARCANA STUDIO LABS</p>
             <div class="flex space-x-8 text-lg" style="color: var(--f-icon);">
-                <a href="#"><i class="fa-brands fa-discord"></i></a>
-                <a href="#"><i class="fa-brands fa-github"></i></a>
+                <a href="#" target="_blank"><i class="fa-brands fa-discord"></i></a>
+                <a href="#" target="_blank"><i class="fa-brands fa-github"></i></a>
                 <a href="mailto:contact@arcanastudiolabs.com"><i class="fa-solid fa-envelope"></i></a>
             </div>
         </div>
@@ -272,4 +283,5 @@
         document.addEventListener('DOMContentLoaded', type);
     </script>
 </body>
+
 </html>
