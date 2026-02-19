@@ -7,7 +7,9 @@
     <title>Arcana Studio Labs</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Share+Tech+Mono&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Audiowide&family=Share+Tech+Mono&family=Orbitron:wght@400;700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --bg: #020617;
@@ -29,7 +31,11 @@
             --dynamic-text: #0f172a;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             background-color: var(--bg);
@@ -42,72 +48,245 @@
             flex-direction: column;
         }
 
-        .brand-font { font-family: 'Audiowide', cursive; text-transform: uppercase; letter-spacing: 0.1em; }
-        .log-font { font-family: 'Share Tech Mono', monospace; }
-        .ops-font { font-family: 'Orbitron', sans-serif; letter-spacing: 0.05em; text-transform: uppercase; }
+        .brand-font {
+            font-family: 'Audiowide', cursive;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .log-font {
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .ops-font {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
 
         #matrix-canvas {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 0; opacity: 0.2; pointer-events: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.2;
+            pointer-events: none;
         }
 
         .brand-title-gradient {
-            display: block; width: 100%;
+            display: block;
+            width: 100%;
             background: linear-gradient(to right, #4dfce6, #73a5ff, #ae80ff);
-            -webkit-background-clip: text; background-clip: text;
+            -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-align: center; font-size: 2.6rem !important; font-weight: 700;
+            text-align: center;
+            font-size: 2.6rem !important;
+            font-weight: 700;
         }
 
         .control-circle {
-            width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
-            border-radius: 50%; border: 1px solid rgba(150, 150, 150, 0.2);
-            background: var(--card-bg); transition: all 0.2s ease; cursor: pointer; color: var(--text);
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 1px solid rgba(150, 150, 150, 0.2);
+            background: var(--card-bg);
+            transition: all 0.2s ease;
+            cursor: pointer;
+            color: var(--text);
         }
 
-        .btn-active-cyan { border-color: var(--c-cyan) !important; color: var(--c-cyan) !important; }
+        .btn-active-cyan {
+            border-color: var(--c-cyan) !important;
+            color: var(--c-cyan) !important;
+        }
 
         .glass-card {
-            background: var(--card-bg); backdrop-filter: blur(20px);
-            border: 1px solid var(--border-glow); border-radius: 1rem;
-            position: relative; z-index: 10;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glow);
+            border-radius: 1rem;
+            position: relative;
+            z-index: 10;
             transition: transform 0.2s ease, border-color 0.2s ease;
             cursor: pointer;
         }
-        
+
         .glass-card:hover {
             transform: translateY(-2px);
             border-color: var(--c-cyan);
         }
 
-        .main-container { width: 100%; max-width: 80rem; margin: 0 auto; padding: 0 1.5rem; }
+        .main-container {
+            width: 100%;
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
 
-        .card-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
-        @media (min-width: 768px) { .card-grid { grid-template-columns: repeat(2, 1fr); } }
-        
-        .card { padding: 1.5rem; height: 180px; display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
-        .node-inner { display: flex; flex-direction: row; gap: 1.5rem; align-items: center; height: 100%; }
-        
-        .node-logo { 
-            width: 110px; height: 110px; flex-shrink: 0; object-fit: contain; 
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .card-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .card {
+            padding: 1.5rem;
+            height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .node-inner {
+            display: flex;
+            flex-direction: row;
+            gap: 1.5rem;
+            align-items: center;
+            height: 100%;
+        }
+
+        .node-logo {
+            width: 110px;
+            height: 110px;
+            flex-shrink: 0;
+            object-fit: contain;
             transition: opacity 0.3s ease;
         }
-        
-        .node-text { flex-grow: 1; }
+
+        .node-text {
+            flex-grow: 1;
+        }
 
         .operations-title {
-            font-family: 'Share Tech Mono', monospace; font-size: 10px; font-weight: 900; 
-            letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; color: var(--text-dim);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+            color: var(--text-dim);
         }
-        
-        .operations-list { flex-grow: 1; overflow-y: auto; padding-right: 0.5rem; }
-        
-        @keyframes status-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-        .status-pulse { animation: status-pulse 2s infinite; }
 
-        #tagline-text { color: var(--dynamic-text); }
-        #tagline-text::after { content: "|"; animation: blink 1s step-end infinite; color: var(--c-cyan); }
-        @keyframes blink { from, to { opacity: 1; } 50% { opacity: 0; } }
+        .operations-list {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+        }
+
+        @keyframes status-pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .status-pulse {
+            animation: status-pulse 2s infinite;
+        }
+
+        #tagline-text {
+            color: var(--dynamic-text);
+        }
+
+        #tagline-text::after {
+            content: "|";
+            animation: blink 1s step-end infinite;
+            color: var(--c-cyan);
+        }
+
+        @keyframes blink {
+
+            from,
+            to {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* Unified Audio Module */
+        .audio-module {
+            display: flex;
+            align-items: center;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-glow);
+            padding: 0 8px;
+            border-radius: 9999px;
+            height: 44px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+            max-width: 44px;
+            /* Only shows the icon button initially */
+        }
+
+        /* Expands on Hover OR when clicking (via a JS class) */
+        .audio-module:hover,
+        .audio-module.active {
+            max-width: 160px;
+            border-color: var(--c-cyan);
+            padding: 0 12px;
+        }
+
+        #audioToggle {
+            width: 28px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: var(--text);
+            flex-shrink: 0;
+        }
+
+        .volume-slider {
+            -webkit-appearance: none;
+            width: 80px;
+            height: 3px;
+            background: var(--text-dim);
+            border-radius: 2px;
+            outline: none;
+            margin-left: 8px;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .audio-module:hover .volume-slider,
+        .audio-module.active .volume-slider {
+            opacity: 1;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--c-cyan);
+            cursor: pointer;
+            box-shadow: 0 0 8px var(--c-cyan);
+        }
     </style>
 </head>
 
@@ -116,10 +295,19 @@
 
     <header class="w-full py-6 relative z-20">
         <div class="main-container flex justify-between items-center">
-            <div class="text-[10px] font-bold tracking-[0.4em] uppercase log-font" style="color: var(--text-dim);">Node: Arcana_Core</div>
-            <div class="flex space-x-3">
-                <button id="matrixToggle" class="control-circle btn-active-cyan"><i class="fa-solid fa-hat-wizard"></i></button>
-                <button id="audioToggle" class="control-circle"><i id="audioIcon" class="fa-solid fa-volume-xmark"></i></button>
+            <div class="text-[10px] font-bold tracking-[0.4em] uppercase log-font" style="color: var(--text-dim);">Node:
+                Arcana_Core</div>
+            <div class="flex items-center space-x-3">
+                <button id="matrixToggle" class="control-circle btn-active-cyan"><i
+                        class="fa-solid fa-hat-wizard"></i></button>
+
+                <div class="audio-module" id="audioModule">
+                    <button id="audioToggle">
+                        <i id="audioIcon" class="fa-solid fa-volume-xmark"></i>
+                    </button>
+                    <input type="range" id="volumeSlider" class="volume-slider" min="0" max="100" value="50">
+                </div>
+
                 <button id="themeToggle" class="control-circle"><i id="themeIcon" class="fa-solid fa-moon"></i></button>
             </div>
         </div>
@@ -127,12 +315,14 @@
 
     <main class="flex-grow flex flex-col items-center relative z-10 px-6">
         <div class="mb-4 mt-2">
-            <img id="mainLogo" src="logo.png" alt="Arcana Logo" class="w-44 h-44 object-contain transition-opacity duration-300" onerror="handleImageError(this)">
+            <img id="mainLogo" src="logo.png" alt="Arcana Logo"
+                class="w-44 h-44 object-contain transition-opacity duration-300" onerror="handleImageError(this)">
         </div>
 
         <div class="max-w-4xl w-full mb-10 text-center">
             <h1 class="brand-font brand-title-gradient">Arcana Studio Labs</h1>
-            <p class="mt-4 text-[10px] md:text-xs tracking-[0.3em] font-bold uppercase log-font" style="color: var(--c-cyan); height: 1.5em;">
+            <p class="mt-4 text-[10px] md:text-xs tracking-[0.3em] font-bold uppercase log-font"
+                style="color: var(--c-cyan); height: 1.5em;">
                 <span style="color: var(--text-dim);">SYSTEM:</span> <span id="tagline-text"></span>
             </p>
         </div>
@@ -140,37 +330,49 @@
         <div class="main-container mb-24 w-full">
             <div class="card-grid">
                 <!-- Lumenpedia Card - Links to https://lumenpedia.arcanastudiolabs.com/ -->
-                <div class="glass-card card" onclick="window.open('https://lumenpedia.arcanastudiolabs.com/', '_blank')">
+                <div class="glass-card card"
+                    onclick="window.open('https://lumenpedia.arcanastudiolabs.com/', '_blank')">
                     <div class="node-inner">
-                        <img id="lumenLogo" src="lumen-logo.png" alt="Lumenpedia" class="node-logo" onerror="handleImageError(this)">
+                        <img id="lumenLogo" src="lumen-logo.png" alt="Lumenpedia" class="node-logo"
+                            onerror="handleImageError(this)">
                         <div class="node-text">
-                            <span class="text-[10px] font-bold uppercase tracking-widest log-font mb-1" style="color: var(--c-cyan);">Database & Strategy Engine</span>
+                            <span class="text-[10px] font-bold uppercase tracking-widest log-font mb-1"
+                                style="color: var(--c-cyan);">Database & Strategy Engine</span>
                             <h2 class="text-xl font-bold brand-font mb-1">Lumenpedia</h2>
-                            <p class="text-sm opacity-80 leading-snug">Jade Dynasty technical documentation and player tools.</p>
+                            <p class="text-sm opacity-80 leading-snug">Jade Dynasty technical documentation and player
+                                tools.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- The Codex of The Witch Card - Links to https://codex-witch.arcanastudiolabs.com/ -->
-                <div class="glass-card card" onclick="window.open('https://codex-witch.arcanastudiolabs.com/', '_blank')">
+                <div class="glass-card card"
+                    onclick="window.open('https://codex-witch.arcanastudiolabs.com/', '_blank')">
                     <div class="node-inner">
-                        <img id="codexLogo" src="logo2.jpg" alt="Codex" class="node-logo" onerror="handleImageError(this)">
+                        <img id="codexLogo" src="logo2.jpg" alt="Codex" class="node-logo"
+                            onerror="handleImageError(this)">
                         <div class="node-text">
-                            <span class="text-[10px] font-bold uppercase tracking-widest log-font mb-1" style="color: var(--c-cyan);">Personal Cartography & Soul-Maps</span>
+                            <span class="text-[10px] font-bold uppercase tracking-widest log-font mb-1"
+                                style="color: var(--c-cyan);">Personal Cartography & Soul-Maps</span>
                             <h2 class="text-xl font-bold brand-font mb-1">The Codex of The Witch</h2>
-                            <p class="text-sm opacity-80 leading-snug">Every soul has a map. Few ever learn to read it.</p>
+                            <p class="text-sm opacity-80 leading-snug">Every soul has a map. Few ever learn to read it.
+                            </p>
                         </div>
                     </div>
                 </div>
 
                 <!-- 2026 Fire Horse Card - Links to https://fengshui-witch.arcanastudiolabs.com/ -->
-                <div class="glass-card card" onclick="window.open('https://fengshui-witch.arcanastudiolabs.com/', '_blank')">
+                <div class="glass-card card"
+                    onclick="window.open('https://fengshui-witch.arcanastudiolabs.com/', '_blank')">
                     <div class="node-inner">
-                        <img id="fireHorseLogo" src="logo4.png" alt="Fire Horse" class="node-logo" onerror="handleImageError(this)">
+                        <img id="fireHorseLogo" src="logo4.png" alt="Fire Horse" class="node-logo"
+                            onerror="handleImageError(this)">
                         <div class="node-text">
-                            <span class="text-[10px] font-bold uppercase tracking-widest log-font mb-1" style="color: var(--c-cyan);">Celestial Flow & Temporal Optimization</span>
+                            <span class="text-[10px] font-bold uppercase tracking-widest log-font mb-1"
+                                style="color: var(--c-cyan);">Celestial Flow & Temporal Optimization</span>
                             <h2 class="text-xl font-bold brand-font mb-1">2026 Fire Horse</h2>
-                            <p class="text-sm opacity-80 leading-snug">Comprehensive Feng Shui and Fortune Guide for 2026.</p>
+                            <p class="text-sm opacity-80 leading-snug">Comprehensive Feng Shui and Fortune Guide for
+                                2026.</p>
                         </div>
                     </div>
                 </div>
@@ -180,11 +382,13 @@
                     <h3 class="operations-title">Recent Operations</h3>
                     <div class="operations-list">
                         <div class="space-y-4 text-[10px] ops-font">
-                            <div class="flex justify-between items-center border-b border-black/5 dark:border-white/5 pb-2">
+                            <div
+                                class="flex justify-between items-center border-b border-black/5 dark:border-white/5 pb-2">
                                 <span class="opacity-70">LUMENPEDIA_PATCH_SYNC</span>
                                 <span class="opacity-40 log-font">02.16</span>
                             </div>
-                            <div class="flex justify-between items-center border-b border-black/5 dark:border-white/5 pb-2">
+                            <div
+                                class="flex justify-between items-center border-b border-black/5 dark:border-white/5 pb-2">
                                 <span class="opacity-70">FIRE_HORSE_FLOW_READY</span>
                                 <span class="opacity-40 log-font">02.14</span>
                             </div>
@@ -200,7 +404,8 @@
     </main>
 
     <footer class="w-full border-t border-black/10 dark:border-white/5 py-10 relative z-20">
-        <div class="main-container flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold tracking-[0.2em] uppercase">
+        <div
+            class="main-container flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold tracking-[0.2em] uppercase">
             <p>© 2026 ARCANA STUDIO LABS</p>
             <div class="flex space-x-8 text-lg" style="color: var(--f-icon);">
                 <a href="#" target="_blank"><i class="fa-brands fa-discord"></i></a>
@@ -211,16 +416,25 @@
     </footer>
 
     <script>
-        // TYPEWRITER ENGINE
+        // --- 1. GLOBAL STATE & ELEMENTS ---
         const textElement = document.getElementById('tagline-text');
+        const canvas = document.getElementById('matrix-canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Audio Setup (Define ONCE outside of loops)
+        const bgMusic = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
+        bgMusic.loop = true;
+        bgMusic.volume = 0.5;
+
         const phrases = [
             "LUMENPEDIA_PROTOCOLS // MASTERING THE VIRTUAL",
             "THE_CODEX_OF_THE_WITCH // DECODING THE SOUL",
             "FIRE_HORSE_2026 // OPTIMIZING CELESTIAL FLOW",
             "ARCANA_STUDIO // MASTERING THE MECHANICS"
         ];
-        let phraseIdx = 0, charIdx = 0, isDeleting = false;
 
+        // --- 2. TYPEWRITER ENGINE ---
+        let phraseIdx = 0, charIdx = 0, isDeleting = false;
         function type() {
             const current = phrases[phraseIdx];
             textElement.innerText = isDeleting ? current.substring(0, charIdx - 1) : current.substring(0, charIdx + 1);
@@ -234,52 +448,84 @@
             setTimeout(type, isDeleting ? 50 : 100);
         }
 
-        // IMAGE FALLBACK HANDLER
+        // --- 3. MATRIX ENGINE ---
+        let columns, drops;
+        function setSize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            columns = Math.floor(canvas.width / 18);
+            drops = Array(columns).fill(1);
+        }
+
+        function draw() {
+            // Only draw if canvas is visible
+            if (canvas.style.display === 'none') return;
+
+            const isL = document.body.classList.contains('light-mode');
+            ctx.fillStyle = isL ? 'rgba(248, 250, 252, 0.15)' : 'rgba(2, 6, 23, 0.15)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.font = '18px monospace';
+            for (let i = 0; i < drops.length; i++) {
+                ctx.fillStyle = isL ? '#0369a1' : '#06b6d4';
+                ctx.fillText('ᚠᚢᚦᚨᚱᚲᚷᚹᚺᚻᚼᚽᚾᚿ'[Math.floor(Math.random() * 14)], i * 18, drops[i] * 18);
+                if (drops[i] * 18 > canvas.height && Math.random() > 0.975) drops[i] = 0;
+                drops[i]++;
+            }
+        }
+
+        // --- 4. INTERACTION LOGIC ---
+
+        // Audio Toggle & Volume
+        const audioBtn = document.getElementById('audioToggle');
+        const audioIcon = document.getElementById('audioIcon');
+        const volumeSlider = document.getElementById('volumeSlider');
+
+        audioBtn.onclick = () => {
+            if (bgMusic.paused) {
+                bgMusic.play();
+                audioIcon.className = 'fa-solid fa-volume-high';
+                audioIcon.style.color = 'var(--c-cyan)';
+            } else {
+                bgMusic.pause();
+                audioIcon.className = 'fa-solid fa-volume-xmark';
+                audioIcon.style.color = 'var(--text)';
+            }
+        };
+
+        volumeSlider.oninput = (e) => {
+            bgMusic.volume = e.target.value / 100;
+        };
+
+        // Matrix Rain Toggle
+        const matrixBtn = document.getElementById('matrixToggle');
+        matrixBtn.onclick = () => {
+            const isVisible = canvas.style.display !== 'none';
+            canvas.style.display = isVisible ? 'none' : 'block';
+            matrixBtn.classList.toggle('btn-active-cyan', !isVisible);
+        };
+
+        // Theme Toggle
+        const themeBtn = document.getElementById('themeToggle');
+        themeBtn.onclick = () => {
+            const isLight = document.body.classList.toggle('light-mode');
+            document.getElementById('themeIcon').className = isLight ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+            // Update images based on theme
+            document.getElementById('mainLogo').src = isLight ? 'logo1.png' : 'logo.png';
+        };
+
+        // Image Fallback Handler
         function handleImageError(image) {
             if (image.src.endsWith(".png")) {
                 image.src = image.src.replace(".png", ".jpg");
-            } else if (image.src.endsWith(".jpg")) {
-                // Fallback to a placeholder if even JPG fails
+            } else {
                 image.style.opacity = "0.2";
             }
         }
 
-        // THEME & LOGO LOGIC
-        const themeBtn = document.getElementById('themeToggle');
-        const themeIcon = document.getElementById('themeIcon');
-        const mainLogo = document.getElementById('mainLogo');
-        const lumenLogo = document.getElementById('lumenLogo');
-        const codexLogo = document.getElementById('codexLogo');
-        const fireHorseLogo = document.getElementById('fireHorseLogo');
-
-        themeBtn.onclick = () => {
-            const isLight = document.body.classList.toggle('light-mode');
-            themeIcon.className = isLight ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
-            
-            // Primary attempts (will trigger handleImageError if not found)
-            mainLogo.src = isLight ? 'logo1.png' : 'logo.png';
-            lumenLogo.src = isLight ? 'logo3.png' : 'lumen-logo.png';
-            codexLogo.src = isLight ? 'logo3.png' : 'logo2.jpg'; 
-            fireHorseLogo.src = isLight ? 'logo5.png' : 'logo4.png';
-        };
-
-        // MATRIX
-        const canvas = document.getElementById('matrix-canvas'), ctx = canvas.getContext('2d');
-        let columns, drops;
-        function setSize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; columns = Math.floor(canvas.width/18); drops = Array(columns).fill(1); }
-        function draw() {
-            const isL = document.body.classList.contains('light-mode');
-            ctx.fillStyle = isL ? 'rgba(248, 250, 252, 0.15)' : 'rgba(2, 6, 23, 0.15)';
-            ctx.fillRect(0,0,canvas.width,canvas.height);
-            ctx.font = '18px monospace';
-            for(let i=0; i<drops.length; i++) {
-                ctx.fillStyle = isL ? '#0369a1' : '#06b6d4';
-                ctx.fillText('ᚠᚢᚦᚨᚱᚲᚷᚹᚺᚻᚼᚽᚾᚿ'[Math.floor(Math.random()*14)], i*18, drops[i]*18);
-                if(drops[i]*18 > canvas.height && Math.random() > 0.975) drops[i] = 0;
-                drops[i]++;
-            }
-        }
-        setSize(); setInterval(draw, 50); window.onresize = setSize;
+        // --- 5. INITIALIZATION ---
+        setSize();
+        setInterval(draw, 50);
+        window.onresize = setSize;
         document.addEventListener('DOMContentLoaded', type);
     </script>
 </body>
