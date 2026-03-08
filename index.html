@@ -287,6 +287,90 @@
             cursor: pointer;
             box-shadow: 0 0 8px var(--c-cyan);
         }
+
+        .donate-btn {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.8rem 1.6rem;
+            background: linear-gradient(var(--bg), var(--bg)) padding-box,
+                        linear-gradient(135deg, #14b8a6, #a855f7) border-box;
+            border: 1.5px solid transparent;
+            backdrop-filter: blur(20px);
+            border-radius: 9999px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            cursor: pointer;
+            transition: opacity 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+            animation: donate-pulse 2.4s ease-out infinite;
+        }
+
+        .donate-btn .donate-label {
+            background: linear-gradient(135deg, #14b8a6, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .donate-btn:hover {
+            background: linear-gradient(135deg, #14b8a6, #a855f7) padding-box,
+                        linear-gradient(135deg, #14b8a6, #a855f7) border-box;
+            box-shadow: 0 0 28px rgba(20, 184, 166, 0.4), 0 0 28px rgba(168, 85, 247, 0.3);
+            transform: translateX(-50%) translateY(-2px);
+            animation: none;
+        }
+
+        .donate-btn:hover .donate-label {
+            background: none;
+            -webkit-text-fill-color: #fff;
+        }
+
+        .donate-btn .donate-label .fa-heart,
+        .donate-btn:hover .donate-label .fa-heart {
+            -webkit-text-fill-color: #ef4444 !important;
+            color: #ef4444 !important;
+        }
+
+        .donate-btn .donate-tooltip {
+            position: absolute;
+            bottom: calc(100% + 10px);
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glow);
+            border-radius: 0.5rem;
+            padding: 0.4rem 0.75rem;
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            color: var(--text-dim);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .donate-btn:hover .donate-tooltip {
+            opacity: 1;
+        }
+
+        @keyframes donate-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.4), 0 0 0 0 rgba(168, 85, 247, 0.3); }
+            70% { box-shadow: 0 0 0 10px rgba(20, 184, 166, 0), 0 0 0 10px rgba(168, 85, 247, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(20, 184, 166, 0), 0 0 0 0 rgba(168, 85, 247, 0); }
+        }
     </style>
 </head>
 
@@ -415,6 +499,15 @@
         </div>
     </footer>
 
+    <a class="donate-btn" id="donateBtn" href="https://www.paypal.com/donate?business=eunice97.cheng%40gmail.com&currency_code=USD" target="_blank" rel="noopener">
+        <span class="donate-tooltip">Donate & support our work</span>
+        <span class="donate-label">
+            <i class="fa-brands fa-paypal"></i>
+            Donate
+            <i class="fa-solid fa-heart" style="font-size:10px; -webkit-text-fill-color:#ef4444; color:#ef4444;"></i>
+        </span>
+    </a>
+
     <script>
         // --- 1. GLOBAL STATE & ELEMENTS ---
         const textElement = document.getElementById('tagline-text');
@@ -522,7 +615,16 @@
             }
         }
 
-        // --- 5. INITIALIZATION ---
+        // --- 5. DONATE BUTTON — app deep-link on mobile ---
+        document.getElementById('donateBtn').addEventListener('click', function (e) {
+            if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+                e.preventDefault();
+                window.location.href = this.href; // same-window nav triggers PayPal app via universal/app link
+            }
+            // desktop: default target="_blank" behaviour
+        });
+
+        // --- 6. INITIALIZATION ---
         setSize();
         setInterval(draw, 50);
         window.onresize = setSize;
