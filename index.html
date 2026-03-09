@@ -492,18 +492,17 @@
             class="main-container flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold tracking-[0.2em] uppercase">
             <p>© 2026 ARCANA STUDIO LABS</p>
             <div class="flex space-x-8 text-lg" style="color: var(--f-icon);">
-                <a href="#" target="_blank"><i class="fa-brands fa-discord"></i></a>
-                <a href="#" target="_blank"><i class="fa-brands fa-github"></i></a>
-                <a href="mailto:contact@arcanastudiolabs.com"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://discord.com/users/909063517280296961" target="_blank" rel="noopener"><i class="fa-brands fa-discord"></i></a>
+                <a href="mailto:eunice97.cheng@gmail.com"><i class="fa-solid fa-envelope"></i></a>
             </div>
         </div>
     </footer>
 
-    <a class="donate-btn" id="donateBtn" href="https://www.paypal.com/donate?business=eunice97.cheng%40gmail.com&currency_code=USD" target="_blank" rel="noopener">
-        <span class="donate-tooltip">Donate & support our work</span>
+    <a class="donate-btn" id="donateBtn" href="https://ko-fi.com/eunicecheng" target="_blank" rel="noopener">
+        <span class="donate-tooltip">Support us on Ko-fi</span>
         <span class="donate-label">
-            <i class="fa-brands fa-paypal"></i>
-            Donate
+            <i class="fa-solid fa-mug-hot"></i>
+            Ko-fi
             <i class="fa-solid fa-heart" style="font-size:10px; -webkit-text-fill-color:#ef4444; color:#ef4444;"></i>
         </span>
     </a>
@@ -619,7 +618,7 @@
         document.getElementById('donateBtn').addEventListener('click', function (e) {
             if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
                 e.preventDefault();
-                window.location.href = this.href; // same-window nav triggers PayPal app via universal/app link
+                window.location.href = this.href; // same-window nav triggers Ko-fi app via universal/app link
             }
             // desktop: default target="_blank" behaviour
         });
