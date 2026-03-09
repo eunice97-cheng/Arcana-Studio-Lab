@@ -288,12 +288,17 @@
             box-shadow: 0 0 8px var(--c-cyan);
         }
 
-        .donate-btn {
+        .floating-btns {
             position: fixed;
             bottom: 2rem;
             left: 50%;
             transform: translateX(-50%);
+            display: flex;
+            gap: 0.75rem;
             z-index: 100;
+        }
+
+        .donate-btn {
             display: flex;
             align-items: center;
             gap: 0.6rem;
@@ -328,7 +333,7 @@
             background: linear-gradient(135deg, #14b8a6, #a855f7) padding-box,
                         linear-gradient(135deg, #14b8a6, #a855f7) border-box;
             box-shadow: 0 0 28px rgba(20, 184, 166, 0.4), 0 0 28px rgba(168, 85, 247, 0.3);
-            transform: translateX(-50%) translateY(-2px);
+            transform: translateY(-2px);
             animation: none;
         }
 
@@ -491,21 +496,26 @@
         <div
             class="main-container flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold tracking-[0.2em] uppercase">
             <p>© 2026 ARCANA STUDIO LABS</p>
-            <div class="flex space-x-8 text-lg" style="color: var(--f-icon);">
-                <a href="https://discord.com/users/909063517280296961" target="_blank" rel="noopener"><i class="fa-brands fa-discord"></i></a>
-                <a href="mailto:eunice97.cheng@gmail.com"><i class="fa-solid fa-envelope"></i></a>
-            </div>
         </div>
     </footer>
 
-    <a class="donate-btn" id="donateBtn" href="https://ko-fi.com/eunicecheng" target="_blank" rel="noopener">
-        <span class="donate-tooltip">Support us on Ko-fi</span>
-        <span class="donate-label">
-            <i class="fa-solid fa-mug-hot"></i>
-            Ko-fi
-            <i class="fa-solid fa-heart" style="font-size:10px; -webkit-text-fill-color:#ef4444; color:#ef4444;"></i>
-        </span>
-    </a>
+    <div class="floating-btns">
+        <a class="donate-btn" id="discordBtn" href="https://discord.com/users/909063517280296961" target="_blank" rel="noopener">
+            <span class="donate-tooltip">Chat on Discord</span>
+            <span class="donate-label">
+                <i class="fa-brands fa-discord"></i>
+                Discord
+            </span>
+        </a>
+        <a class="donate-btn" id="donateBtn" href="https://ko-fi.com/eunicecheng" target="_blank" rel="noopener">
+            <span class="donate-tooltip">Support us on Ko-fi</span>
+            <span class="donate-label">
+                <i class="fa-solid fa-mug-hot"></i>
+                Ko-fi
+                <i class="fa-solid fa-heart" style="font-size:10px; -webkit-text-fill-color:#ef4444; color:#ef4444;"></i>
+            </span>
+        </a>
+    </div>
 
     <script>
         // --- 1. GLOBAL STATE & ELEMENTS ---
@@ -614,13 +624,14 @@
             }
         }
 
-        // --- 5. DONATE BUTTON — app deep-link on mobile ---
-        document.getElementById('donateBtn').addEventListener('click', function (e) {
-            if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-                e.preventDefault();
-                window.location.href = this.href; // same-window nav triggers Ko-fi app via universal/app link
-            }
-            // desktop: default target="_blank" behaviour
+        // --- 5. FLOATING BUTTONS — app deep-link on mobile ---
+        ['donateBtn', 'discordBtn'].forEach(function(id) {
+            document.getElementById(id).addEventListener('click', function (e) {
+                if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+                    e.preventDefault();
+                    window.location.href = this.href;
+                }
+            });
         });
 
         // --- 6. INITIALIZATION ---
