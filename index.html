@@ -293,6 +293,11 @@
             box-shadow: 0 0 0 1px rgba(255, 59, 92, 0.24), 0 18px 40px rgba(255, 59, 92, 0.18);
         }
 
+        .project-card.is-beta-node {
+            border-color: rgba(56, 189, 248, 0.55);
+            box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.24), 0 18px 40px rgba(56, 189, 248, 0.18);
+        }
+
         .project-card.is-hot-node {
             border-color: rgba(245, 158, 11, 0.55);
             box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.22), 0 18px 40px rgba(245, 158, 11, 0.14);
@@ -301,6 +306,11 @@
         .project-card.is-new-node .node-logo-frame {
             border-color: rgba(255, 59, 92, 0.4);
             box-shadow: 0 0 26px rgba(255, 59, 92, 0.18);
+        }
+
+        .project-card.is-beta-node .node-logo-frame {
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 0 26px rgba(56, 189, 248, 0.18);
         }
 
         .project-card.is-hot-node .node-logo-frame {
@@ -338,6 +348,11 @@
             border: 1px solid rgba(255, 91, 69, 0.55);
         }
 
+        .node-corner-badge.beta {
+            background: linear-gradient(135deg, #0ea5e9, #38bdf8);
+            border: 1px solid rgba(56, 189, 248, 0.55);
+        }
+
         .node-corner-badge.hot {
             background: linear-gradient(135deg, #f97316, #f59e0b);
             border: 1px solid rgba(245, 158, 11, 0.55);
@@ -354,6 +369,7 @@
         .card.reveal:nth-child(3) { animation-delay: 0.19s; }
         .card.reveal:nth-child(4) { animation-delay: 0.26s; }
         .card.reveal:nth-child(5) { animation-delay: 0.33s; }
+        .card.reveal:nth-child(6) { animation-delay: 0.4s; }
 
         .node-inner {
             display: grid;
@@ -431,14 +447,16 @@
         }
 
         .node-badge.is-live,
-        .node-badge.is-new {
+        .node-badge.is-new,
+        .node-badge.is-beta {
             position: relative;
             padding-left: 0.9rem;
             animation: badge-blink 1.8s ease-in-out infinite;
         }
 
         .node-badge.is-live::before,
-        .node-badge.is-new::before {
+        .node-badge.is-new::before,
+        .node-badge.is-beta::before {
             content: "";
             position: absolute;
             left: 0.42rem;
@@ -455,6 +473,10 @@
 
         .node-badge.is-new {
             color: #ff3b5c;
+        }
+
+        .node-badge.is-beta {
+            color: #38bdf8;
         }
 
         .node-badge.muted {
@@ -1410,7 +1432,7 @@
                     </div>
                 </div>
                 <div class="header-meta">
-                    <span class="header-pill"><strong id="headerActiveNodes">04</strong> Nodes Live</span>
+                    <span class="header-pill"><strong id="headerActiveNodes">05</strong> Nodes Live</span>
                 </div>
                 <div class="header-controls">
                     <button id="matrixToggle" class="control-circle btn-active-cyan" aria-label="Toggle rune background"
@@ -1472,7 +1494,7 @@
                         <div class="signal-row">
                             <div class="signal-chip">
                                 <div class="signal-label">Active Nodes</div>
-                                <div class="signal-value" id="activeNodeCount">04</div>
+                                <div class="signal-value" id="activeNodeCount">05</div>
                                 <div class="signal-meta">Live domains operating across knowledge, divination, and play.</div>
                             </div>
                             <div class="signal-chip">
@@ -1494,14 +1516,15 @@
                             </div>
                             <div class="console-row">
                                 <span class="console-key">Latest Node</span>
-                                <span class="console-val" id="latestNodeName">Basement Poker</span>
+                                <span class="console-val" id="latestNodeName">Maze Warrior</span>
                             </div>
                         </div>
                         <div class="hero-scan">
                             <div class="scan-title">Surface Scan</div>
                             <p class="scan-copy">
-                                From Jade Dynasty tooling to symbolic cartography and poker-night experiments, the Arcana
-                                layer is built to feel like a living switchboard instead of a static link list.
+                                From Jade Dynasty tooling to symbolic cartography, poker-night experiments, and live maze
+                                trials, the Arcana layer is built to feel like a living switchboard instead of a static
+                                link list.
                             </p>
                         </div>
                     </aside>
@@ -1553,6 +1576,29 @@
                             </div>
                             <p class="node-description text-sm opacity-80 leading-snug">A dedicated poker hub for basement sessions,
                                 strategy, and game-night action.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Maze Warrior Card - Links to https://maze-warrior.arcanastudiolabs.com/landing -->
+                <a class="glass-card card project-card reveal project-link is-beta-node" style="--card-accent: #38bdf8;"
+                    href="https://maze-warrior.arcanastudiolabs.com/landing" target="_blank" rel="noopener"
+                    aria-label="Open Maze Warrior">
+                    <span class="node-corner-badge beta"><i class="fa-solid fa-flask"></i> BETA</span>
+                    <div class="node-inner">
+                        <div class="node-logo-frame">
+                            <img id="mazeWarriorLogo" src="maze-warrior-logo.png" alt="Maze Warrior" class="node-logo"
+                                onerror="handleImageError(this)">
+                        </div>
+                        <div class="node-text">
+                            <span class="card-kicker">Beta Human Trials & Quick Play</span>
+                            <h2 class="text-xl font-bold brand-font mb-1">Maze Warrior</h2>
+                            <div class="node-meta">
+                                <span class="node-badge is-beta">Beta</span>
+                                <span class="node-badge muted">Human Trials Open</span>
+                            </div>
+                            <p class="node-description text-sm opacity-80 leading-snug">Open a room, gather four Marked,
+                                and enter the live maze through Quick Play beta.</p>
                         </div>
                     </div>
                 </a>
@@ -1682,17 +1728,19 @@
             "THE_CODEX_OF_THE_WITCH // DECODING THE SOUL",
             "FIRE_HORSE_2026 // OPTIMIZING CELESTIAL FLOW",
             "ASL_BASEMENT_POKER // RUNNING THE NIGHT GAME",
+            "MAZE_WARRIOR // ENTER THE BETA MAZE",
             "ARCANA_STUDIO // MASTERING THE MECHANICS"
         ];
 
         const dashboardState = {
-            latestNode: "Basement Poker",
+            latestNode: "Maze Warrior",
             metrics: [
                 { label: "Launch Stack", value: "00 Nodes" },
-                { label: "Newest Signal", value: "Basement Poker" },
+                { label: "Newest Signal", value: "Maze Warrior" },
                 { label: "Core State", value: "Stable", accent: true }
             ],
             operations: [
+                { label: "MAZE_WARRIOR_BETA_LIVE", date: "03.25" },
                 { label: "BASEMENT_POKER_DEPLOY", date: "03.13" },
                 { label: "LUMENPEDIA_PATCH_SYNC", date: "02.16" },
                 { label: "FIRE_HORSE_FLOW_READY", date: "02.14" },
