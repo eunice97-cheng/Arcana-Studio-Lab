@@ -258,6 +258,158 @@
             padding: 0 1.5rem;
         }
 
+        .featured-launch {
+            display: grid;
+            grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+            gap: 1.5rem;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 1.35rem;
+        }
+
+        .featured-launch-media {
+            position: relative;
+            border-radius: 1.35rem;
+            overflow: hidden;
+            border: 1px solid rgba(224, 190, 122, 0.26);
+            background: rgba(2, 8, 23, 0.4);
+            box-shadow: 0 18px 44px rgba(2, 8, 23, 0.26);
+        }
+
+        .featured-launch-media img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+        }
+
+        .featured-launch-copy {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            gap: 0.9rem;
+        }
+
+        .featured-launch-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            width: fit-content;
+            padding: 0.42rem 0.72rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(224, 190, 122, 0.18);
+            background: rgba(224, 190, 122, 0.08);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #f3d190;
+        }
+
+        .featured-launch-kicker::before {
+            content: "";
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 50%;
+            background: currentColor;
+            box-shadow: 0 0 14px currentColor;
+            animation: badge-blink 1.8s ease-in-out infinite;
+        }
+
+        .featured-launch-title {
+            font-size: clamp(1.9rem, 4vw, 2.9rem);
+            line-height: 0.95;
+            color: #fff4db;
+            text-shadow: 0 8px 22px rgba(224, 190, 122, 0.14);
+        }
+
+        .featured-launch-subtitle {
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--c-gold);
+        }
+
+        .featured-launch-desc {
+            max-width: 42rem;
+            font-size: 0.96rem;
+            line-height: 1.65;
+            color: color-mix(in srgb, var(--text) 82%, transparent);
+        }
+
+        .featured-launch-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+
+        .featured-launch-pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.38rem 0.78rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.05);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text);
+        }
+
+        .featured-launch-pill.price {
+            border-color: rgba(224, 190, 122, 0.35);
+            background: rgba(224, 190, 122, 0.12);
+            color: #f5ddac;
+        }
+
+        .featured-launch-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .featured-launch-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            padding: 0.82rem 1.15rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(224, 190, 122, 0.3);
+            background: linear-gradient(135deg, rgba(224, 190, 122, 0.22), rgba(245, 158, 11, 0.16));
+            color: #fff6df;
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .featured-launch-cta:hover,
+        .featured-launch-cta:focus-visible {
+            transform: translateY(-2px);
+            border-color: rgba(224, 190, 122, 0.45);
+            box-shadow: 0 16px 28px rgba(224, 190, 122, 0.16);
+            background: linear-gradient(135deg, rgba(224, 190, 122, 0.3), rgba(245, 158, 11, 0.22));
+        }
+
+        .featured-launch-cta:focus-visible {
+            outline: 2px solid rgba(243, 209, 144, 0.8);
+            outline-offset: 3px;
+        }
+
+        .featured-launch-note {
+            max-width: 40rem;
+            font-size: 0.82rem;
+            line-height: 1.55;
+            color: var(--text-dim);
+        }
+
         .card-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -303,6 +455,11 @@
             box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.22), 0 18px 40px rgba(245, 158, 11, 0.14);
         }
 
+        .project-card.is-premium-node {
+            border-color: rgba(224, 190, 122, 0.58);
+            box-shadow: 0 0 0 1px rgba(224, 190, 122, 0.24), 0 18px 40px rgba(224, 190, 122, 0.16);
+        }
+
         .project-card.is-new-node .node-logo-frame {
             border-color: rgba(255, 59, 92, 0.4);
             box-shadow: 0 0 26px rgba(255, 59, 92, 0.18);
@@ -316,6 +473,11 @@
         .project-card.is-hot-node .node-logo-frame {
             border-color: rgba(245, 158, 11, 0.35);
             box-shadow: 0 0 22px rgba(245, 158, 11, 0.16);
+        }
+
+        .project-card.is-premium-node .node-logo-frame {
+            border-color: rgba(224, 190, 122, 0.42);
+            box-shadow: 0 0 24px rgba(224, 190, 122, 0.18);
         }
 
         .node-corner-badge {
@@ -358,6 +520,13 @@
             border: 1px solid rgba(245, 158, 11, 0.55);
         }
 
+        .node-corner-badge.premium {
+            background: linear-gradient(135deg, #d6a84f, #f3d190);
+            border: 1px solid rgba(243, 209, 144, 0.55);
+            color: #23150a;
+            text-shadow: none;
+        }
+
         .card.reveal {
             opacity: 0;
             transform: translateY(24px);
@@ -370,6 +539,7 @@
         .card.reveal:nth-child(4) { animation-delay: 0.26s; }
         .card.reveal:nth-child(5) { animation-delay: 0.33s; }
         .card.reveal:nth-child(6) { animation-delay: 0.4s; }
+        .card.reveal:nth-child(7) { animation-delay: 0.47s; }
 
         .node-inner {
             display: grid;
@@ -401,6 +571,11 @@
             transition: opacity 0.3s ease, transform 0.35s ease, filter 0.35s ease;
             filter: drop-shadow(0 12px 20px rgba(2, 8, 23, 0.22));
             padding: 0.5rem;
+        }
+
+        .node-logo-cover {
+            padding: 0;
+            object-fit: cover;
         }
 
         .project-link:hover .node-logo,
@@ -448,7 +623,8 @@
 
         .node-badge.is-live,
         .node-badge.is-new,
-        .node-badge.is-beta {
+        .node-badge.is-beta,
+        .node-badge.is-paid {
             position: relative;
             padding-left: 0.9rem;
             animation: badge-blink 1.8s ease-in-out infinite;
@@ -456,7 +632,8 @@
 
         .node-badge.is-live::before,
         .node-badge.is-new::before,
-        .node-badge.is-beta::before {
+        .node-badge.is-beta::before,
+        .node-badge.is-paid::before {
             content: "";
             position: absolute;
             left: 0.42rem;
@@ -477,6 +654,10 @@
 
         .node-badge.is-beta {
             color: #38bdf8;
+        }
+
+        .node-badge.is-paid {
+            color: #fbbf24;
         }
 
         .node-badge.muted {
@@ -1362,6 +1543,33 @@
                 grid-template-columns: 1fr;
             }
 
+            .featured-launch {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+
+            .featured-launch-media {
+                max-width: 22rem;
+                margin: 0 auto;
+            }
+
+            .featured-launch-title,
+            .featured-launch-subtitle {
+                text-align: center;
+            }
+
+            .featured-launch-kicker,
+            .featured-launch-meta,
+            .featured-launch-actions {
+                justify-content: center;
+            }
+
+            .featured-launch-desc,
+            .featured-launch-note {
+                max-width: none;
+                text-align: center;
+            }
+
             .card {
                 min-height: auto;
             }
@@ -1378,6 +1586,10 @@
 
             .node-logo {
                 padding: 0.4rem;
+            }
+
+            .node-logo-cover {
+                padding: 0;
             }
 
             .node-logo-frame {
@@ -1432,7 +1644,7 @@
                     </div>
                 </div>
                 <div class="header-meta">
-                    <span class="header-pill"><strong id="headerActiveNodes">05</strong> Nodes Live</span>
+                    <span class="header-pill"><strong id="headerActiveNodes">06</strong> Nodes Live</span>
                 </div>
                 <div class="header-controls">
                     <button id="matrixToggle" class="control-circle btn-active-cyan" aria-label="Toggle rune background"
@@ -1488,13 +1700,13 @@
                             </div>
                         </div>
                         <p class="hero-copy">
-                            Strategy engines, symbolic tools, seasonal guides, and side-quest experiments, all surfaced as
-                            live Arcana nodes.
+                            Strategy engines, symbolic tools, premium worldbuilding databases, seasonal guides, and
+                            side-quest experiments, all surfaced as live Arcana nodes.
                         </p>
                         <div class="signal-row">
                             <div class="signal-chip">
                                 <div class="signal-label">Active Nodes</div>
-                                <div class="signal-value" id="activeNodeCount">05</div>
+                                <div class="signal-value" id="activeNodeCount">06</div>
                                 <div class="signal-meta">Live domains operating across knowledge, divination, and play.</div>
                             </div>
                             <div class="signal-chip">
@@ -1516,15 +1728,15 @@
                             </div>
                             <div class="console-row">
                                 <span class="console-key">Latest Node</span>
-                                <span class="console-val" id="latestNodeName">Maze Warrior</span>
+                                <span class="console-val" id="latestNodeName">Grand Codex</span>
                             </div>
                         </div>
                         <div class="hero-scan">
                             <div class="scan-title">Surface Scan</div>
                             <p class="scan-copy">
-                                From Jade Dynasty tooling to symbolic cartography, poker-night experiments, and live maze
-                                trials, the Arcana layer is built to feel like a living switchboard instead of a static
-                                link list.
+                                From Jade Dynasty tooling to symbolic cartography, premium worldbuilding databases,
+                                poker-night experiments, and live maze trials, the Arcana layer is built to feel like a
+                                living switchboard instead of a static link list.
                             </p>
                         </div>
                     </aside>
@@ -1533,7 +1745,67 @@
         </div>
 
         <div class="main-container mb-16 w-full">
+            <section class="glass-card featured-launch" style="--card-accent: #e0be7a;" aria-labelledby="grandCodexTitle">
+                <a class="featured-launch-media"
+                    href="https://arcanastudiolabs.itch.io/grand-codex-the-ultimate-offline-npc-worldbuilding-database"
+                    target="_blank" rel="noopener noreferrer" aria-label="View Grand Codex on itch.io">
+                    <img src="grand-codex-cover.png" alt="Grand Codex cover art" onerror="handleImageError(this)">
+                </a>
+                <div class="featured-launch-copy">
+                    <div class="featured-launch-kicker">New Premium Release</div>
+                    <div>
+                        <h2 class="featured-launch-title brand-font" id="grandCodexTitle">Grand Codex</h2>
+                        <p class="featured-launch-subtitle">Offline NPC Database</p>
+                    </div>
+                    <p class="featured-launch-desc">
+                        A local-first NPC worldbuilding database for game masters, writers, and creators. Organize
+                        characters, portraits, factions, notes, relationships, and custom details in one portable archive.
+                    </p>
+                    <div class="featured-launch-meta">
+                        <span class="featured-launch-pill price">$14.99 USD</span>
+                        <span class="featured-launch-pill">Offline-First</span>
+                        <span class="featured-launch-pill">Worldbuilding Tool</span>
+                        <span class="featured-launch-pill">JSON Import / Export</span>
+                    </div>
+                    <div class="featured-launch-actions">
+                        <a class="featured-launch-cta"
+                            href="https://arcanastudiolabs.itch.io/grand-codex-the-ultimate-offline-npc-worldbuilding-database"
+                            target="_blank" rel="noopener noreferrer">
+                            <i class="fa-solid fa-store"></i>
+                            View On itch.io
+                        </a>
+                    </div>
+                    <p class="featured-launch-note">
+                        This is a premium release sold on itch.io, not a free browser tool. The Arcana hub is only
+                        advertising the project and routing buyers to the official store page.
+                    </p>
+                </div>
+            </section>
+
             <div class="card-grid">
+                <!-- Grand Codex Card - Links to itch.io store page only -->
+                <a class="glass-card card project-card reveal project-link is-premium-node" style="--card-accent: #e0be7a;"
+                    href="https://arcanastudiolabs.itch.io/grand-codex-the-ultimate-offline-npc-worldbuilding-database"
+                    target="_blank" rel="noopener noreferrer" aria-label="Open Grand Codex on itch.io">
+                    <span class="node-corner-badge premium"><i class="fa-solid fa-crown"></i> PREMIUM</span>
+                    <div class="node-inner">
+                        <div class="node-logo-frame">
+                            <img id="grandCodexLogo" src="grand-codex-cover.png" alt="Grand Codex"
+                                class="node-logo node-logo-cover" onerror="handleImageError(this)">
+                        </div>
+                        <div class="node-text">
+                            <span class="card-kicker">Offline NPC Database</span>
+                            <h2 class="text-xl font-bold brand-font mb-1">Grand Codex</h2>
+                            <div class="node-meta">
+                                <span class="node-badge is-new">New</span>
+                                <span class="node-badge is-paid">$14.99 USD</span>
+                            </div>
+                            <p class="node-description text-sm opacity-80 leading-snug">Premium worldbuilding database for
+                                writers, game masters, and creators who need a rich offline NPC archive.</p>
+                        </div>
+                    </div>
+                </a>
+
                 <!-- Lumenpedia Card - Links to https://lumenpedia.arcanastudiolabs.com/ -->
                 <a class="glass-card card project-card reveal project-link is-hot-node" style="--card-accent: #34d399;"
                     href="https://lumenpedia.arcanastudiolabs.com/" target="_blank" rel="noopener"
@@ -1669,11 +1941,11 @@
     </footer>
 
     <div class="floating-btns">
-        <a class="donate-btn" id="discordBtn" href="https://discord.com/channels/1374401696373149827" target="_blank" rel="noopener">
-            <span class="donate-tooltip">Open Discord server</span>
+        <a class="donate-btn" id="discordBtn" href="https://discord.gg/sypZjUwPav" target="_blank" rel="noopener">
+            <span class="donate-tooltip">Join our Discord community</span>
             <span class="donate-label">
                 <i class="fa-brands fa-discord"></i>
-                Discord
+                Join Discord
             </span>
         </a>
         <a class="donate-btn" id="donateBtn" href="https://ko-fi.com/eunicecheng" target="_blank" rel="noopener">
@@ -1728,18 +2000,20 @@
             "THE_CODEX_OF_THE_WITCH // DECODING THE SOUL",
             "FIRE_HORSE_2026 // OPTIMIZING CELESTIAL FLOW",
             "ASL_BASEMENT_POKER // RUNNING THE NIGHT GAME",
+            "GRAND_CODEX // OFFLINE NPC ARCHIVE",
             "MAZE_WARRIOR // ENTER THE BETA MAZE",
             "ARCANA_STUDIO // MASTERING THE MECHANICS"
         ];
 
         const dashboardState = {
-            latestNode: "Maze Warrior",
+            latestNode: "Grand Codex",
             metrics: [
                 { label: "Launch Stack", value: "00 Nodes" },
-                { label: "Newest Signal", value: "Maze Warrior" },
+                { label: "Newest Signal", value: "Grand Codex" },
                 { label: "Core State", value: "Stable", accent: true }
             ],
             operations: [
+                { label: "GRAND_CODEX_STORE_LIVE", date: "04.07" },
                 { label: "MAZE_WARRIOR_BETA_LIVE", date: "03.25" },
                 { label: "BASEMENT_POKER_DEPLOY", date: "03.13" },
                 { label: "LUMENPEDIA_PATCH_SYNC", date: "02.16" },
