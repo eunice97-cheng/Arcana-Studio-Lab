@@ -271,7 +271,7 @@
             position: relative;
             border-radius: 1.35rem;
             overflow: hidden;
-            border: 1px solid rgba(224, 190, 122, 0.26);
+            border: 1px solid color-mix(in srgb, var(--card-accent, #e0be7a) 30%, transparent);
             background: rgba(2, 8, 23, 0.4);
             box-shadow: 0 18px 44px rgba(2, 8, 23, 0.26);
         }
@@ -298,13 +298,13 @@
             width: fit-content;
             padding: 0.42rem 0.72rem;
             border-radius: 9999px;
-            border: 1px solid rgba(224, 190, 122, 0.18);
-            background: rgba(224, 190, 122, 0.08);
+            border: 1px solid color-mix(in srgb, var(--card-accent, #e0be7a) 22%, transparent);
+            background: color-mix(in srgb, var(--card-accent, #e0be7a) 10%, transparent);
             font-size: 10px;
             font-weight: 700;
             letter-spacing: 0.18em;
             text-transform: uppercase;
-            color: #f3d190;
+            color: color-mix(in srgb, var(--card-accent, #e0be7a) 72%, white 28%);
         }
 
         .featured-launch-kicker::before {
@@ -320,8 +320,8 @@
         .featured-launch-title {
             font-size: clamp(1.9rem, 4vw, 2.9rem);
             line-height: 0.95;
-            color: #fff4db;
-            text-shadow: 0 8px 22px rgba(224, 190, 122, 0.14);
+            color: #f8f7ff;
+            text-shadow: 0 8px 22px color-mix(in srgb, var(--card-accent, #e0be7a) 18%, transparent);
         }
 
         .featured-launch-subtitle {
@@ -329,7 +329,7 @@
             font-weight: 700;
             letter-spacing: 0.18em;
             text-transform: uppercase;
-            color: var(--c-gold);
+            color: var(--card-accent, var(--c-gold));
         }
 
         .featured-launch-desc {
@@ -361,9 +361,9 @@
         }
 
         .featured-launch-pill.price {
-            border-color: rgba(224, 190, 122, 0.35);
-            background: rgba(224, 190, 122, 0.12);
-            color: #f5ddac;
+            border-color: color-mix(in srgb, var(--card-accent, #e0be7a) 38%, transparent);
+            background: color-mix(in srgb, var(--card-accent, #e0be7a) 14%, transparent);
+            color: color-mix(in srgb, var(--card-accent, #e0be7a) 66%, white 34%);
         }
 
         .featured-launch-actions {
@@ -379,9 +379,11 @@
             gap: 0.6rem;
             padding: 0.82rem 1.15rem;
             border-radius: 9999px;
-            border: 1px solid rgba(224, 190, 122, 0.3);
-            background: linear-gradient(135deg, rgba(224, 190, 122, 0.22), rgba(245, 158, 11, 0.16));
-            color: #fff6df;
+            border: 1px solid color-mix(in srgb, var(--card-accent, #e0be7a) 34%, transparent);
+            background: linear-gradient(135deg,
+                        color-mix(in srgb, var(--card-accent, #e0be7a) 24%, transparent),
+                        color-mix(in srgb, var(--card-accent, #e0be7a) 12%, rgba(255, 255, 255, 0.04)));
+            color: #f8f7ff;
             text-decoration: none;
             font-size: 0.82rem;
             font-weight: 700;
@@ -393,13 +395,15 @@
         .featured-launch-cta:hover,
         .featured-launch-cta:focus-visible {
             transform: translateY(-2px);
-            border-color: rgba(224, 190, 122, 0.45);
-            box-shadow: 0 16px 28px rgba(224, 190, 122, 0.16);
-            background: linear-gradient(135deg, rgba(224, 190, 122, 0.3), rgba(245, 158, 11, 0.22));
+            border-color: color-mix(in srgb, var(--card-accent, #e0be7a) 50%, transparent);
+            box-shadow: 0 16px 28px color-mix(in srgb, var(--card-accent, #e0be7a) 18%, transparent);
+            background: linear-gradient(135deg,
+                        color-mix(in srgb, var(--card-accent, #e0be7a) 30%, transparent),
+                        color-mix(in srgb, var(--card-accent, #e0be7a) 18%, rgba(255, 255, 255, 0.06)));
         }
 
         .featured-launch-cta:focus-visible {
-            outline: 2px solid rgba(243, 209, 144, 0.8);
+            outline: 2px solid color-mix(in srgb, var(--card-accent, #e0be7a) 80%, white 20%);
             outline-offset: 3px;
         }
 
@@ -408,6 +412,118 @@
             font-size: 0.82rem;
             line-height: 1.55;
             color: var(--text-dim);
+        }
+
+        .support-status-banner {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 1.2rem;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 1.15rem 1.25rem;
+            border-color: rgba(244, 63, 94, 0.24);
+            box-shadow: 0 18px 38px rgba(190, 24, 93, 0.12);
+        }
+
+        .support-status-copy {
+            display: grid;
+            gap: 0.55rem;
+        }
+
+        .support-status-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            width: fit-content;
+            padding: 0.38rem 0.68rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(251, 113, 133, 0.24);
+            background: rgba(244, 63, 94, 0.08);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #fda4af;
+        }
+
+        .support-status-kicker::before {
+            content: "";
+            width: 0.48rem;
+            height: 0.48rem;
+            border-radius: 50%;
+            background: currentColor;
+            box-shadow: 0 0 14px currentColor;
+            animation: badge-blink 1.8s ease-in-out infinite;
+        }
+
+        .support-status-title {
+            margin: 0;
+            font-size: clamp(1.15rem, 2vw, 1.55rem);
+            line-height: 1.2;
+            color: #fff1f2;
+        }
+
+        .support-status-text {
+            max-width: 48rem;
+            margin: 0;
+            font-size: 0.92rem;
+            line-height: 1.6;
+            color: color-mix(in srgb, var(--text) 86%, transparent);
+        }
+
+        .support-status-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: flex-end;
+        }
+
+        .support-status-cta,
+        .support-status-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.55rem;
+            min-height: 2.9rem;
+            padding: 0.78rem 1rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .support-status-cta {
+            border: 1px solid rgba(251, 113, 133, 0.34);
+            background: linear-gradient(135deg, rgba(190, 24, 93, 0.28), rgba(244, 63, 94, 0.18));
+            color: #fff1f2;
+        }
+
+        .support-status-link {
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text);
+        }
+
+        .support-status-cta:hover,
+        .support-status-cta:focus-visible,
+        .support-status-link:hover,
+        .support-status-link:focus-visible {
+            transform: translateY(-2px);
+        }
+
+        .support-status-cta:hover,
+        .support-status-cta:focus-visible {
+            border-color: rgba(251, 113, 133, 0.46);
+            box-shadow: 0 14px 28px rgba(190, 24, 93, 0.18);
+        }
+
+        .support-status-link:hover,
+        .support-status-link:focus-visible {
+            border-color: rgba(56, 189, 248, 0.28);
+            box-shadow: 0 14px 28px rgba(2, 8, 23, 0.12);
         }
 
         .card-grid {
@@ -460,6 +576,16 @@
             box-shadow: 0 0 0 1px rgba(224, 190, 122, 0.24), 0 18px 40px rgba(224, 190, 122, 0.16);
         }
 
+        .project-card.is-story-node {
+            border-color: rgba(129, 140, 248, 0.5);
+            box-shadow: 0 0 0 1px rgba(129, 140, 248, 0.2), 0 18px 40px rgba(79, 70, 229, 0.16);
+        }
+
+        .project-card.is-paused-node {
+            border-color: rgba(244, 63, 94, 0.46);
+            box-shadow: 0 0 0 1px rgba(244, 63, 94, 0.18), 0 18px 40px rgba(190, 24, 93, 0.14);
+        }
+
         .project-card.is-new-node .node-logo-frame {
             border-color: rgba(255, 59, 92, 0.4);
             box-shadow: 0 0 26px rgba(255, 59, 92, 0.18);
@@ -478,6 +604,16 @@
         .project-card.is-premium-node .node-logo-frame {
             border-color: rgba(224, 190, 122, 0.42);
             box-shadow: 0 0 24px rgba(224, 190, 122, 0.18);
+        }
+
+        .project-card.is-story-node .node-logo-frame {
+            border-color: rgba(129, 140, 248, 0.34);
+            box-shadow: 0 0 26px rgba(79, 70, 229, 0.16);
+        }
+
+        .project-card.is-paused-node .node-logo-frame {
+            border-color: rgba(251, 113, 133, 0.28);
+            box-shadow: 0 0 24px rgba(190, 24, 93, 0.16);
         }
 
         .node-corner-badge {
@@ -527,6 +663,16 @@
             text-shadow: none;
         }
 
+        .node-corner-badge.story {
+            background: linear-gradient(135deg, #4f46e5, #8b5cf6);
+            border: 1px solid rgba(167, 139, 250, 0.52);
+        }
+
+        .node-corner-badge.paused {
+            background: linear-gradient(135deg, #be123c, #fb7185);
+            border: 1px solid rgba(251, 113, 133, 0.55);
+        }
+
         .card.reveal {
             opacity: 0;
             transform: translateY(24px);
@@ -540,6 +686,7 @@
         .card.reveal:nth-child(5) { animation-delay: 0.33s; }
         .card.reveal:nth-child(6) { animation-delay: 0.4s; }
         .card.reveal:nth-child(7) { animation-delay: 0.47s; }
+        .card.reveal:nth-child(8) { animation-delay: 0.54s; }
 
         .node-inner {
             display: grid;
@@ -624,6 +771,8 @@
         .node-badge.is-live,
         .node-badge.is-new,
         .node-badge.is-beta,
+        .node-badge.is-story,
+        .node-badge.is-paused,
         .node-badge.is-paid {
             position: relative;
             padding-left: 0.9rem;
@@ -633,6 +782,8 @@
         .node-badge.is-live::before,
         .node-badge.is-new::before,
         .node-badge.is-beta::before,
+        .node-badge.is-story::before,
+        .node-badge.is-paused::before,
         .node-badge.is-paid::before {
             content: "";
             position: absolute;
@@ -654,6 +805,14 @@
 
         .node-badge.is-beta {
             color: #38bdf8;
+        }
+
+        .node-badge.is-story {
+            color: #a78bfa;
+        }
+
+        .node-badge.is-paused {
+            color: #fb7185;
         }
 
         .node-badge.is-paid {
@@ -1570,6 +1729,21 @@
                 text-align: center;
             }
 
+            .support-status-banner {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+
+            .support-status-kicker,
+            .support-status-actions {
+                justify-content: center;
+            }
+
+            .support-status-title,
+            .support-status-text {
+                text-align: center;
+            }
+
             .card {
                 min-height: auto;
             }
@@ -1644,7 +1818,7 @@
                     </div>
                 </div>
                 <div class="header-meta">
-                    <span class="header-pill"><strong id="headerActiveNodes">06</strong> Nodes Live</span>
+                    <span class="header-pill"><strong id="headerActiveNodes">05</strong> Nodes Live</span>
                 </div>
                 <div class="header-controls">
                     <button id="matrixToggle" class="control-circle btn-active-cyan" aria-label="Toggle rune background"
@@ -1700,14 +1874,14 @@
                             </div>
                         </div>
                         <p class="hero-copy">
-                            Strategy engines, symbolic tools, premium worldbuilding databases, seasonal guides, and
-                            side-quest experiments, all surfaced as live Arcana nodes.
+                            Strategy engines, symbolic tools, premium worldbuilding databases, web fiction, seasonal guides, and
+                            side-quest experiments, with a couple of hosted nodes temporarily paused while we rebuild support.
                         </p>
                         <div class="signal-row">
                             <div class="signal-chip">
                                 <div class="signal-label">Active Nodes</div>
-                                <div class="signal-value" id="activeNodeCount">06</div>
-                                <div class="signal-meta">Live domains operating across knowledge, divination, and play.</div>
+                                <div class="signal-value" id="activeNodeCount">05</div>
+                                <div class="signal-meta">Five live nodes online, with two hosted experiments paused pending relaunch support.</div>
                             </div>
                             <div class="signal-chip">
                                 <div class="signal-label">Current Phase</div>
@@ -1728,15 +1902,16 @@
                             </div>
                             <div class="console-row">
                                 <span class="console-key">Latest Node</span>
-                                <span class="console-val" id="latestNodeName">Grand Codex</span>
+                                <span class="console-val" id="latestNodeName">The Void's Arcana</span>
                             </div>
                         </div>
                         <div class="hero-scan">
                             <div class="scan-title">Surface Scan</div>
                             <p class="scan-copy">
                                 From Jade Dynasty tooling to symbolic cartography, premium worldbuilding databases,
+                                Royal Road fiction,
                                 poker-night experiments, and live maze trials, the Arcana layer is built to feel like a
-                                living switchboard instead of a static link list.
+                                living switchboard, even while a couple of hosted experiments wait for support to come back online.
                             </p>
                         </div>
                     </aside>
@@ -1745,44 +1920,93 @@
         </div>
 
         <div class="main-container mb-16 w-full">
-            <section class="glass-card featured-launch" style="--card-accent: #e0be7a;" aria-labelledby="grandCodexTitle">
+            <section class="glass-card featured-launch" style="--card-accent: #8b5cf6;" aria-labelledby="voidsArcanaFeatureTitle">
                 <a class="featured-launch-media"
-                    href="https://arcanastudiolabs.itch.io/grand-codex-the-ultimate-offline-npc-worldbuilding-database"
-                    target="_blank" rel="noopener noreferrer" aria-label="View Grand Codex on itch.io">
-                    <img src="grand-codex-cover.png" alt="Grand Codex cover art" onerror="handleImageError(this)">
+                    href="https://www.royalroad.com/fiction/162415/the-voids-arcana"
+                    target="_blank" rel="noopener noreferrer" aria-label="Read The Void's Arcana on Royal Road">
+                    <img src="voids-arcana-cover-square.png" alt="The Void's Arcana cover art" onerror="handleImageError(this)">
                 </a>
                 <div class="featured-launch-copy">
-                    <div class="featured-launch-kicker">New Premium Release</div>
+                    <div class="featured-launch-kicker">Featured Web Novel</div>
                     <div>
-                        <h2 class="featured-launch-title brand-font" id="grandCodexTitle">Grand Codex</h2>
-                        <p class="featured-launch-subtitle">Offline NPC Database</p>
+                        <h2 class="featured-launch-title brand-font" id="voidsArcanaFeatureTitle">The Void's Arcana</h2>
+                        <p class="featured-launch-subtitle">Royal Road Original Web Novel</p>
                     </div>
                     <p class="featured-launch-desc">
-                        A local-first NPC worldbuilding database for game masters, writers, and creators. Organize
-                        characters, portraits, factions, notes, relationships, and custom details in one portable archive.
+                        Read The Void's Arcana for free on Royal Road, or enjoy early releases on Ko-fi through
+                        member subscriptions as this fiction branch expands the Arcana universe beyond tools and games.
                     </p>
                     <div class="featured-launch-meta">
-                        <span class="featured-launch-pill price">$14.99 USD</span>
-                        <span class="featured-launch-pill">Offline-First</span>
-                        <span class="featured-launch-pill">Worldbuilding Tool</span>
-                        <span class="featured-launch-pill">JSON Import / Export</span>
+                        <span class="featured-launch-pill price">Free On Royal Road</span>
+                        <span class="featured-launch-pill">Web Novel</span>
+                        <span class="featured-launch-pill">Early Releases On Ko-fi</span>
+                        <span class="featured-launch-pill">Member Subs Required</span>
                     </div>
                     <div class="featured-launch-actions">
                         <a class="featured-launch-cta"
-                            href="https://arcanastudiolabs.itch.io/grand-codex-the-ultimate-offline-npc-worldbuilding-database"
+                            href="https://www.royalroad.com/fiction/162415/the-voids-arcana"
                             target="_blank" rel="noopener noreferrer">
-                            <i class="fa-solid fa-store"></i>
-                            View On itch.io
+                            <i class="fa-solid fa-book-open"></i>
+                            Read Free On Royal Road
+                        </a>
+                        <a class="featured-launch-cta"
+                            href="https://ko-fi.com/eunicecheng"
+                            target="_blank" rel="noopener noreferrer">
+                            <i class="fa-solid fa-mug-hot"></i>
+                            Early Releases On Ko-fi
                         </a>
                     </div>
                     <p class="featured-launch-note">
-                        This is a premium release sold on itch.io, not a free browser tool. The Arcana hub is only
-                        advertising the project and routing buyers to the official store page.
+                        Read for free on Royal Road, or unlock early releases through Ko-fi member subscriptions.
                     </p>
                 </div>
             </section>
 
+            <section class="glass-card support-status-banner" id="support-panel" aria-labelledby="supportStatusTitle">
+                <div class="support-status-copy">
+                    <div class="support-status-kicker">Service Update</div>
+                    <h2 class="support-status-title brand-font" id="supportStatusTitle">Basement Poker and Maze Warrior are temporarily offline</h2>
+                    <p class="support-status-text">
+                        Both projects are temporarily offline after support slowed down.
+                        Support on Ko-fi helps us bring both games back online.
+                    </p>
+                </div>
+                <div class="support-status-actions">
+                    <a class="support-status-cta" href="https://ko-fi.com/eunicecheng" target="_blank" rel="noopener">
+                        <i class="fa-solid fa-mug-hot"></i>
+                        Support On Ko-fi
+                    </a>
+                    <a class="support-status-link" href="https://discord.gg/sypZjUwPav" target="_blank" rel="noopener">
+                        <i class="fa-brands fa-discord"></i>
+                        Follow Updates
+                    </a>
+                </div>
+            </section>
+
             <div class="card-grid">
+                <!-- The Void's Arcana Card - Links to Royal Road fiction page -->
+                <a class="glass-card card project-card reveal project-link is-story-node" style="--card-accent: #8b5cf6;"
+                    href="https://www.royalroad.com/fiction/162415/the-voids-arcana" target="_blank" rel="noopener noreferrer"
+                    aria-label="Read The Void's Arcana on Royal Road">
+                    <span class="node-corner-badge story"><i class="fa-solid fa-book-open"></i> SERIAL</span>
+                    <div class="node-inner">
+                        <div class="node-logo-frame">
+                            <img id="voidsArcanaLogo" src="voids-arcana-cover-square.png" alt="The Void's Arcana cover"
+                                class="node-logo node-logo-cover" onerror="handleImageError(this)">
+                        </div>
+                        <div class="node-text">
+                            <span class="card-kicker">Royal Road Original Web Novel</span>
+                            <h2 class="text-xl font-bold brand-font mb-1">The Void's Arcana</h2>
+                            <div class="node-meta">
+                                <span class="node-badge is-story">Free</span>
+                                <span class="node-badge muted">Royal Road</span>
+                                <span class="node-badge muted">Early On Ko-fi</span>
+                            </div>
+                            <p class="node-description text-sm opacity-80 leading-snug">Read free on Royal Road, or enjoy early releases on Ko-fi with a member subscription.</p>
+                        </div>
+                    </div>
+                </a>
+
                 <!-- Grand Codex Card - Links to itch.io store page only -->
                 <a class="glass-card card project-card reveal project-link is-premium-node" style="--card-accent: #e0be7a;"
                     href="https://arcanastudiolabs.itch.io/grand-codex-the-ultimate-offline-npc-worldbuilding-database"
@@ -1829,48 +2053,46 @@
                     </div>
                 </a>
 
-                <!-- ASL Basement Poker Card - Links to https://basement-poker.arcanastudiolabs.com/ -->
-                <a class="glass-card card project-card reveal project-link is-new-node" style="--card-accent: #fb7185;"
-                    href="https://basement-poker.arcanastudiolabs.com/" target="_blank" rel="noopener"
-                    aria-label="Open ASL Basement Poker">
-                    <span class="node-corner-badge new"><i class="fa-solid fa-burst"></i> NEW</span>
+                <!-- ASL Basement Poker Card - Links to Ko-fi support while the project is paused -->
+                <a class="glass-card card project-card reveal project-link is-paused-node" style="--card-accent: #fb7185;"
+                    href="https://ko-fi.com/eunicecheng" target="_blank" rel="noopener"
+                    aria-label="Support Arcana Studio Labs on Ko-fi to help relaunch ASL Basement Poker">
+                    <span class="node-corner-badge paused"><i class="fa-solid fa-triangle-exclamation"></i> PAUSED</span>
                     <div class="node-inner">
                         <div class="node-logo-frame">
                             <img id="basementPokerLogo" src="ASL Poker Launch.png" alt="ASL Basement Poker" class="node-logo"
                                 onerror="handleImageError(this)">
                         </div>
                         <div class="node-text">
-                            <span class="card-kicker">Cards, Strategy & Table Play</span>
+                            <span class="card-kicker">Temporary Service Pause</span>
                             <h2 class="text-xl font-bold brand-font mb-1">ASL Basement Poker</h2>
                             <div class="node-meta">
-                                <span class="node-badge is-new">New</span>
-                                <span class="node-badge muted">Deployed 03.13</span>
+                                <span class="node-badge is-paused">Offline</span>
+                                <span class="node-badge muted">Support relaunch</span>
                             </div>
-                            <p class="node-description text-sm opacity-80 leading-snug">A dedicated poker hub for basement sessions,
-                                strategy, and game-night action.</p>
+                            <p class="node-description text-sm opacity-80 leading-snug">This project is temporarily offline. Support on Ko-fi helps bring the table back online.</p>
                         </div>
                     </div>
                 </a>
 
-                <!-- Maze Warrior Card - Links to https://maze-warrior.arcanastudiolabs.com/landing -->
-                <a class="glass-card card project-card reveal project-link is-beta-node" style="--card-accent: #38bdf8;"
-                    href="https://maze-warrior.arcanastudiolabs.com/landing" target="_blank" rel="noopener"
-                    aria-label="Open Maze Warrior">
-                    <span class="node-corner-badge beta"><i class="fa-solid fa-flask"></i> BETA</span>
+                <!-- Maze Warrior Card - Links to Ko-fi support while the project is paused -->
+                <a class="glass-card card project-card reveal project-link is-paused-node" style="--card-accent: #fb7185;"
+                    href="https://ko-fi.com/eunicecheng" target="_blank" rel="noopener"
+                    aria-label="Support Arcana Studio Labs on Ko-fi to help relaunch Maze Warrior">
+                    <span class="node-corner-badge paused"><i class="fa-solid fa-triangle-exclamation"></i> PAUSED</span>
                     <div class="node-inner">
                         <div class="node-logo-frame">
                             <img id="mazeWarriorLogo" src="maze-warrior-logo.png" alt="Maze Warrior" class="node-logo"
                                 onerror="handleImageError(this)">
                         </div>
                         <div class="node-text">
-                            <span class="card-kicker">Beta Human Trials & Quick Play</span>
+                            <span class="card-kicker">Temporary Service Pause</span>
                             <h2 class="text-xl font-bold brand-font mb-1">Maze Warrior</h2>
                             <div class="node-meta">
-                                <span class="node-badge is-beta">Beta</span>
-                                <span class="node-badge muted">Human Trials Open</span>
+                                <span class="node-badge is-paused">Offline</span>
+                                <span class="node-badge muted">Hosting relaunch</span>
                             </div>
-                            <p class="node-description text-sm opacity-80 leading-snug">Open a room, gather four Marked,
-                                and enter the live maze through Quick Play beta.</p>
+                            <p class="node-description text-sm opacity-80 leading-snug">This project is temporarily offline. Community support helps reopen Quick Play.</p>
                         </div>
                     </div>
                 </a>
@@ -1968,7 +2190,7 @@
         const activeNodeCount = document.getElementById('activeNodeCount');
         const latestNodeName = document.getElementById('latestNodeName');
         const headerActiveNodes = document.getElementById('headerActiveNodes');
-        const projectLinks = Array.from(document.querySelectorAll('.project-link'));
+        const liveProjectLinks = Array.from(document.querySelectorAll('.project-link:not(.is-paused-node)'));
         const runeGlyphs = "\u16A0\u16A2\u16A6\u16A8\u16B1\u16B2\u16B7\u16B9\u16BA\u16BE\u16C1\u16C3\u16C7\u16C8\u16C9";
 
         // Audio Setup
@@ -1996,26 +2218,28 @@
         }
 
         const phrases = [
+            "THE_VOIDS_ARCANA // ROYAL ROAD SERIAL LIVE",
             "LUMENPEDIA_PROTOCOLS // MASTERING THE VIRTUAL",
             "THE_CODEX_OF_THE_WITCH // DECODING THE SOUL",
             "FIRE_HORSE_2026 // OPTIMIZING CELESTIAL FLOW",
-            "ASL_BASEMENT_POKER // RUNNING THE NIGHT GAME",
+            "ASL_BASEMENT_POKER // RELAUNCH PENDING SUPPORT",
             "GRAND_CODEX // OFFLINE NPC ARCHIVE",
-            "MAZE_WARRIOR // ENTER THE BETA MAZE",
+            "MAZE_WARRIOR // HOSTING PAUSED FOR NOW",
             "ARCANA_STUDIO // MASTERING THE MECHANICS"
         ];
 
         const dashboardState = {
-            latestNode: "Grand Codex",
+            latestNode: "The Void's Arcana",
             metrics: [
                 { label: "Launch Stack", value: "00 Nodes" },
-                { label: "Newest Signal", value: "Grand Codex" },
+                { label: "Newest Signal", value: "The Void's Arcana" },
                 { label: "Core State", value: "Stable", accent: true }
             ],
             operations: [
+                { label: "VOIDS_ARCANA_ROYALROAD_LIVE", date: "04.18" },
                 { label: "GRAND_CODEX_STORE_LIVE", date: "04.07" },
-                { label: "MAZE_WARRIOR_BETA_LIVE", date: "03.25" },
-                { label: "BASEMENT_POKER_DEPLOY", date: "03.13" },
+                { label: "MAZE_WARRIOR_RELAUNCH_PENDING", date: "SUPPORT" },
+                { label: "BASEMENT_POKER_RELAUNCH_PENDING", date: "SUPPORT" },
                 { label: "LUMENPEDIA_PATCH_SYNC", date: "02.16" },
                 { label: "FIRE_HORSE_FLOW_READY", date: "02.14" },
                 { label: "ENGINE STATUS", value: "STABLE", accent: true }
@@ -2023,7 +2247,7 @@
         };
 
         function renderDashboard() {
-            const nodeCount = String(projectLinks.length).padStart(2, '0');
+            const nodeCount = String(liveProjectLinks.length).padStart(2, '0');
             activeNodeCount.textContent = nodeCount;
             headerActiveNodes.textContent = nodeCount;
             latestNodeName.textContent = dashboardState.latestNode;
