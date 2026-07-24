@@ -526,6 +526,151 @@
             box-shadow: 0 14px 28px rgba(2, 8, 23, 0.12);
         }
 
+        .flagship-showcase {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr) minmax(0, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .flagship-card {
+            min-height: 270px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: inherit;
+            text-decoration: none;
+            overflow: hidden;
+            box-shadow: 0 28px 70px rgba(2, 8, 23, 0.28);
+        }
+
+        .flagship-card:hover,
+        .flagship-card:focus-visible {
+            transform: translateY(-6px);
+            border-color: color-mix(in srgb, var(--card-accent, var(--c-cyan)) 58%, transparent);
+            box-shadow: 0 34px 90px color-mix(in srgb, var(--card-accent, var(--c-cyan)) 22%, rgba(2, 8, 23, 0.26));
+        }
+
+        .flagship-card:focus-visible {
+            outline: 2px solid color-mix(in srgb, var(--card-accent, var(--c-cyan)) 82%, white);
+            outline-offset: 3px;
+        }
+
+        .flagship-card.is-blackjack {
+            min-height: 300px;
+            border-color: rgba(245, 199, 109, 0.32);
+            background:
+                radial-gradient(circle at 78% 20%, rgba(245, 199, 109, 0.24), transparent 34%),
+                radial-gradient(circle at 18% 84%, rgba(16, 185, 129, 0.16), transparent 32%),
+                var(--card-bg);
+        }
+
+        .flagship-head {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .flagship-logo {
+            width: 6.25rem;
+            height: 6.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 1.25rem;
+            border: 1px solid color-mix(in srgb, var(--card-accent, var(--c-cyan)) 34%, transparent);
+            background: rgba(2, 8, 23, 0.34);
+            box-shadow: 0 18px 36px color-mix(in srgb, var(--card-accent, var(--c-cyan)) 18%, transparent);
+            overflow: hidden;
+        }
+
+        .flagship-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 0.5rem;
+            filter: drop-shadow(0 14px 24px rgba(2, 8, 23, 0.32));
+        }
+
+        .flagship-logo.is-cover img {
+            padding: 0;
+            object-fit: cover;
+        }
+
+        .flagship-pill {
+            position: relative;
+            z-index: 1;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            width: fit-content;
+            padding: 0.38rem 0.72rem;
+            border-radius: 9999px;
+            border: 1px solid color-mix(in srgb, var(--card-accent, var(--c-cyan)) 34%, transparent);
+            background: color-mix(in srgb, var(--card-accent, var(--c-cyan)) 12%, transparent);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: color-mix(in srgb, var(--card-accent, var(--c-cyan)) 70%, white 30%);
+        }
+
+        .flagship-pill::before {
+            content: "";
+            width: 0.45rem;
+            height: 0.45rem;
+            border-radius: 50%;
+            background: currentColor;
+            box-shadow: 0 0 14px currentColor;
+            animation: badge-blink 1.8s ease-in-out infinite;
+        }
+
+        .flagship-copy {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            gap: 0.7rem;
+        }
+
+        .flagship-title {
+            font-size: clamp(1.35rem, 2.6vw, 2rem);
+            line-height: 1.05;
+            color: #f8f7ff;
+        }
+
+        .flagship-card.is-blackjack .flagship-title {
+            font-size: clamp(1.6rem, 3vw, 2.35rem);
+        }
+
+        .flagship-text {
+            color: color-mix(in srgb, var(--text) 80%, transparent);
+            font-size: 0.88rem;
+            line-height: 1.55;
+        }
+
+        .flagship-cta {
+            position: relative;
+            z-index: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.55rem;
+            width: fit-content;
+            padding: 0.74rem 1rem;
+            border-radius: 9999px;
+            border: 1px solid color-mix(in srgb, var(--card-accent, var(--c-cyan)) 38%, transparent);
+            background: color-mix(in srgb, var(--card-accent, var(--c-cyan)) 16%, transparent);
+            color: #fff;
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
         .card-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -571,6 +716,16 @@
             box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.22), 0 18px 40px rgba(245, 158, 11, 0.14);
         }
 
+        .project-card.is-casino-node {
+            border-color: rgba(245, 199, 109, 0.58);
+            box-shadow: 0 0 0 1px rgba(245, 199, 109, 0.24), 0 18px 42px rgba(245, 199, 109, 0.16);
+        }
+
+        .project-card.is-poker-node {
+            border-color: rgba(45, 212, 191, 0.54);
+            box-shadow: 0 0 0 1px rgba(45, 212, 191, 0.22), 0 18px 42px rgba(45, 212, 191, 0.14);
+        }
+
         .project-card.is-premium-node {
             border-color: rgba(224, 190, 122, 0.58);
             box-shadow: 0 0 0 1px rgba(224, 190, 122, 0.24), 0 18px 40px rgba(224, 190, 122, 0.16);
@@ -599,6 +754,16 @@
         .project-card.is-hot-node .node-logo-frame {
             border-color: rgba(245, 158, 11, 0.35);
             box-shadow: 0 0 22px rgba(245, 158, 11, 0.16);
+        }
+
+        .project-card.is-casino-node .node-logo-frame {
+            border-color: rgba(245, 199, 109, 0.42);
+            box-shadow: 0 0 28px rgba(245, 199, 109, 0.2);
+        }
+
+        .project-card.is-poker-node .node-logo-frame {
+            border-color: rgba(45, 212, 191, 0.38);
+            box-shadow: 0 0 26px rgba(45, 212, 191, 0.17);
         }
 
         .project-card.is-premium-node .node-logo-frame {
@@ -1744,6 +1909,20 @@
                 text-align: center;
             }
 
+            .flagship-showcase {
+                grid-template-columns: 1fr;
+            }
+
+            .flagship-card,
+            .flagship-card.is-blackjack {
+                min-height: 250px;
+            }
+
+            .flagship-logo {
+                width: 5rem;
+                height: 5rem;
+            }
+
             .card {
                 min-height: auto;
             }
@@ -1792,10 +1971,6 @@
                 animation: none;
                 transform: none;
             }
-        }
-
-        footer .main-container > p:last-child {
-            display: none;
         }
 
     </style>
@@ -1874,14 +2049,14 @@
                             </div>
                         </div>
                         <p class="hero-copy">
-                            Strategy engines, symbolic tools, premium worldbuilding databases, web fiction, seasonal guides, and
-                            side-quest experiments, with a couple of hosted nodes temporarily paused while we rebuild support.
+                            Live casino lounges, strategy engines, symbolic tools, seasonal guides, and
+                            side-quest experiments, with Maze Warrior still paused while relaunch support rebuilds.
                         </p>
                         <div class="signal-row">
                             <div class="signal-chip">
                                 <div class="signal-label">Active Nodes</div>
                                 <div class="signal-value" id="activeNodeCount">05</div>
-                                <div class="signal-meta">Five live nodes online, with two hosted experiments paused pending relaunch support.</div>
+                                <div class="signal-meta">Five live nodes online, with Maze Warrior paused pending relaunch support.</div>
                             </div>
                             <div class="signal-chip">
                                 <div class="signal-label">Current Phase</div>
@@ -1898,20 +2073,18 @@
                             </div>
                             <div class="console-row">
                                 <span class="console-key">Focus</span>
-                                <span class="console-val">Mystic Utility</span>
+                                <span class="console-val">Casino & Knowledge</span>
                             </div>
                             <div class="console-row">
                                 <span class="console-key">Latest Node</span>
-                                <span class="console-val" id="latestNodeName">The Void's Arcana</span>
+                                <span class="console-val" id="latestNodeName">ASL BlackJack Lounge</span>
                             </div>
                         </div>
                         <div class="hero-scan">
                             <div class="scan-title">Surface Scan</div>
                             <p class="scan-copy">
-                                From Jade Dynasty tooling to symbolic cartography, premium worldbuilding databases,
-                                Royal Road fiction,
-                                poker-night experiments, and live maze trials, the Arcana layer is built to feel like a
-                                living switchboard, even while a couple of hosted experiments wait for support to come back online.
+                                From ASL BlackJack Lounge and Basement Poker to Jade Dynasty tooling, symbolic cartography,
+                                and seasonal guides, the Arcana layer is built to feel like a living switchboard while Maze Warrior waits for its relaunch window.
                             </p>
                         </div>
                     </aside>
@@ -1920,58 +2093,76 @@
         </div>
 
         <div class="main-container mb-16 w-full">
-            <section class="glass-card featured-launch" style="--card-accent: #8b5cf6;" aria-labelledby="voidsArcanaFeatureTitle">
-                <a class="featured-launch-media"
-                    href="https://www.royalroad.com/fiction/162415/the-voids-arcana"
-                    target="_blank" rel="noopener noreferrer" aria-label="Read The Void's Arcana on Royal Road">
-                    <img src="voids-arcana-cover-square.png" alt="The Void's Arcana cover art" onerror="handleImageError(this)">
+            <section class="flagship-showcase" aria-label="Featured Arcana live nodes">
+                <a class="glass-card flagship-card is-blackjack" style="--card-accent: #f5c76d;"
+                    href="https://basement-poker.arcanastudiolabs.com/blackjack" target="_blank" rel="noopener"
+                    aria-label="Enter ASL BlackJack Lounge">
+                    <div class="flagship-head">
+                        <div class="flagship-logo">
+                            <img src="asl-blackjack-logo.png" alt="ASL BlackJack Lounge logo" onerror="handleImageError(this)">
+                        </div>
+                        <span class="flagship-pill">Expansion Live</span>
+                    </div>
+                    <div class="flagship-copy">
+                        <h2 class="flagship-title brand-font">ASL BlackJack Lounge</h2>
+                        <p class="flagship-text">
+                            The new table expansion is open inside the same player account system as Basement Poker.
+                        </p>
+                        <span class="flagship-cta"><i class="fa-solid fa-diamond"></i> Enter Blackjack</span>
+                    </div>
                 </a>
-                <div class="featured-launch-copy">
-                    <div class="featured-launch-kicker">Featured Web Novel</div>
-                    <div>
-                        <h2 class="featured-launch-title brand-font" id="voidsArcanaFeatureTitle">The Void's Arcana</h2>
-                        <p class="featured-launch-subtitle">Royal Road Original Web Novel</p>
+
+                <a class="glass-card flagship-card" style="--card-accent: #2dd4bf;"
+                    href="https://basement-poker.arcanastudiolabs.com/" target="_blank" rel="noopener"
+                    aria-label="Enter ASL Basement Poker">
+                    <div class="flagship-head">
+                        <div class="flagship-logo is-cover">
+                            <img src="ASL Poker Launch.png" alt="ASL Basement Poker" onerror="handleImageError(this)">
+                        </div>
+                        <span class="flagship-pill">Back Online</span>
                     </div>
-                    <p class="featured-launch-desc">
-                        Read The Void's Arcana for free on Royal Road, or enjoy early releases on Ko-fi through
-                        member subscriptions as this fiction branch expands the Arcana universe beyond tools and games.
-                    </p>
-                    <div class="featured-launch-meta">
-                        <span class="featured-launch-pill price">Free On Royal Road</span>
-                        <span class="featured-launch-pill">Web Novel</span>
-                        <span class="featured-launch-pill">Early Releases On Ko-fi</span>
-                        <span class="featured-launch-pill">Member Subs Required</span>
+                    <div class="flagship-copy">
+                        <h2 class="flagship-title brand-font">ASL Basement Poker</h2>
+                        <p class="flagship-text">
+                            The poker room is back with shared profiles, chips, tables, chat, and the new blackjack path.
+                        </p>
+                        <span class="flagship-cta"><i class="fa-solid fa-spade"></i> Enter Poker</span>
                     </div>
-                    <div class="featured-launch-actions">
-                        <a class="featured-launch-cta"
-                            href="https://www.royalroad.com/fiction/162415/the-voids-arcana"
-                            target="_blank" rel="noopener noreferrer">
-                            <i class="fa-solid fa-book-open"></i>
-                            Read Free On Royal Road
-                        </a>
-                        <a class="featured-launch-cta"
-                            href="https://ko-fi.com/eunicecheng"
-                            target="_blank" rel="noopener noreferrer">
-                            <i class="fa-solid fa-mug-hot"></i>
-                            Early Releases On Ko-fi
-                        </a>
+                </a>
+
+                <a class="glass-card flagship-card" style="--card-accent: #34d399;"
+                    href="https://lumenpedia.arcanastudiolabs.com/" target="_blank" rel="noopener"
+                    aria-label="Open Lumenpedia">
+                    <div class="flagship-head">
+                        <div class="flagship-logo">
+                            <img src="lumen-logo.png" alt="Lumenpedia" onerror="handleImageError(this)">
+                        </div>
+                        <span class="flagship-pill">Strategy Engine</span>
                     </div>
-                    <p class="featured-launch-note">
-                        Read for free on Royal Road, or unlock early releases through Ko-fi member subscriptions.
-                    </p>
-                </div>
+                    <div class="flagship-copy">
+                        <h2 class="flagship-title brand-font">Lumenpedia</h2>
+                        <p class="flagship-text">
+                            Jade Dynasty Lumen references, technical guides, and player tools remain a core Arcana node.
+                        </p>
+                        <span class="flagship-cta"><i class="fa-solid fa-database"></i> Open Lumenpedia</span>
+                    </div>
+                </a>
             </section>
 
             <section class="glass-card support-status-banner" id="support-panel" aria-labelledby="supportStatusTitle">
                 <div class="support-status-copy">
                     <div class="support-status-kicker">Service Update</div>
-                    <h2 class="support-status-title brand-font" id="supportStatusTitle">Basement Poker and Maze Warrior are temporarily offline</h2>
+                    <h2 class="support-status-title brand-font" id="supportStatusTitle">Basement Poker is back, with Blackjack Lounge now open</h2>
                     <p class="support-status-text">
-                        Both projects are temporarily offline after support slowed down.
-                        Support on Ko-fi helps us bring both games back online.
+                        Poker has reopened, and the new ASL BlackJack Lounge expands the same account-and-profile experience.
+                        Support helps keep the rooms running and gives development room to continue without slowing the tables down.
                     </p>
                 </div>
                 <div class="support-status-actions">
+                    <a class="support-status-link" href="https://basement-poker.arcanastudiolabs.com/" target="_blank" rel="noopener">
+                        <i class="fa-solid fa-spade"></i>
+                        Enter Poker
+                    </a>
                     <a class="support-status-cta" href="https://ko-fi.com/eunicecheng" target="_blank" rel="noopener">
                         <i class="fa-solid fa-mug-hot"></i>
                         Support On Ko-fi
@@ -1984,48 +2175,46 @@
             </section>
 
             <div class="card-grid">
-                <!-- The Void's Arcana Card - Links to Royal Road fiction page -->
-                <a class="glass-card card project-card reveal project-link is-story-node" style="--card-accent: #8b5cf6;"
-                    href="https://www.royalroad.com/fiction/162415/the-voids-arcana" target="_blank" rel="noopener noreferrer"
-                    aria-label="Read The Void's Arcana on Royal Road">
-                    <span class="node-corner-badge story"><i class="fa-solid fa-book-open"></i> SERIAL</span>
+                <!-- ASL BlackJack Lounge Card - Links to the blackjack expansion -->
+                <a class="glass-card card project-card reveal project-link is-casino-node" style="--card-accent: #f5c76d;"
+                    href="https://basement-poker.arcanastudiolabs.com/blackjack" target="_blank" rel="noopener"
+                    aria-label="Enter ASL BlackJack Lounge">
+                    <span class="node-corner-badge premium"><i class="fa-solid fa-diamond"></i> NEW</span>
                     <div class="node-inner">
                         <div class="node-logo-frame">
-                            <img id="voidsArcanaLogo" src="voids-arcana-cover-square.png" alt="The Void's Arcana cover"
-                                class="node-logo node-logo-cover" onerror="handleImageError(this)">
+                            <img id="blackjackLogo" src="asl-blackjack-logo.png" alt="ASL BlackJack Lounge" class="node-logo"
+                                onerror="handleImageError(this)">
                         </div>
                         <div class="node-text">
-                            <span class="card-kicker">Royal Road Original Web Novel</span>
-                            <h2 class="text-xl font-bold brand-font mb-1">The Void's Arcana</h2>
+                            <span class="card-kicker">Casino Lounge Expansion</span>
+                            <h2 class="text-xl font-bold brand-font mb-1">ASL BlackJack Lounge</h2>
                             <div class="node-meta">
-                                <span class="node-badge is-story">Free</span>
-                                <span class="node-badge muted">Royal Road</span>
-                                <span class="node-badge muted">Early On Ko-fi</span>
+                                <span class="node-badge is-live">Live</span>
+                                <span class="node-badge muted">Shared Account</span>
                             </div>
-                            <p class="node-description text-sm opacity-80 leading-snug">Read free on Royal Road, or enjoy early releases on Ko-fi with a member subscription.</p>
+                            <p class="node-description text-sm opacity-80 leading-snug">A new blackjack room connected to the Basement Poker account and profile system.</p>
                         </div>
                     </div>
                 </a>
 
-                <!-- Grand Codex Card - Links to itch.io store page only -->
-                <a class="glass-card card project-card reveal project-link is-premium-node" style="--card-accent: #e0be7a;"
-                    href="https://arcanastudiolabs.itch.io/grand-codex-the-ultimate-offline-npc-worldbuilding-database"
-                    target="_blank" rel="noopener noreferrer" aria-label="Open Grand Codex on itch.io">
-                    <span class="node-corner-badge premium"><i class="fa-solid fa-crown"></i> PREMIUM</span>
+                <!-- ASL Basement Poker Card - Links to the live poker lounge -->
+                <a class="glass-card card project-card reveal project-link is-poker-node" style="--card-accent: #2dd4bf;"
+                    href="https://basement-poker.arcanastudiolabs.com/" target="_blank" rel="noopener"
+                    aria-label="Enter ASL Basement Poker">
+                    <span class="node-corner-badge beta"><i class="fa-solid fa-spade"></i> LIVE</span>
                     <div class="node-inner">
                         <div class="node-logo-frame">
-                            <img id="grandCodexLogo" src="grand-codex-cover.png" alt="Grand Codex"
-                                class="node-logo node-logo-cover" onerror="handleImageError(this)">
+                            <img id="basementPokerLogo" src="ASL Poker Launch.png" alt="ASL Basement Poker" class="node-logo"
+                                onerror="handleImageError(this)">
                         </div>
                         <div class="node-text">
-                            <span class="card-kicker">Offline NPC Database</span>
-                            <h2 class="text-xl font-bold brand-font mb-1">Grand Codex</h2>
+                            <span class="card-kicker">Multiplayer Poker Lounge</span>
+                            <h2 class="text-xl font-bold brand-font mb-1">ASL Basement Poker</h2>
                             <div class="node-meta">
-                                <span class="node-badge is-new">New</span>
-                                <span class="node-badge is-paid">$14.99 USD</span>
+                                <span class="node-badge is-live">Live</span>
+                                <span class="node-badge muted">Tables Open</span>
                             </div>
-                            <p class="node-description text-sm opacity-80 leading-snug">Premium worldbuilding database for
-                                writers, game masters, and creators who need a rich offline NPC archive.</p>
+                            <p class="node-description text-sm opacity-80 leading-snug">The poker room is back online with registered profiles, chips, table chat, and live rooms.</p>
                         </div>
                     </div>
                 </a>
@@ -2049,28 +2238,6 @@
                             </div>
                             <p class="node-description text-sm opacity-80 leading-snug">Jade Dynasty technical documentation and player
                                 tools.</p>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- ASL Basement Poker Card - Links to Ko-fi support while the project is paused -->
-                <a class="glass-card card project-card reveal project-link is-paused-node" style="--card-accent: #fb7185;"
-                    href="https://ko-fi.com/eunicecheng" target="_blank" rel="noopener"
-                    aria-label="Support Arcana Studio Labs on Ko-fi to help relaunch ASL Basement Poker">
-                    <span class="node-corner-badge paused"><i class="fa-solid fa-triangle-exclamation"></i> PAUSED</span>
-                    <div class="node-inner">
-                        <div class="node-logo-frame">
-                            <img id="basementPokerLogo" src="ASL Poker Launch.png" alt="ASL Basement Poker" class="node-logo"
-                                onerror="handleImageError(this)">
-                        </div>
-                        <div class="node-text">
-                            <span class="card-kicker">Temporary Service Pause</span>
-                            <h2 class="text-xl font-bold brand-font mb-1">ASL Basement Poker</h2>
-                            <div class="node-meta">
-                                <span class="node-badge is-paused">Offline</span>
-                                <span class="node-badge muted">Support relaunch</span>
-                            </div>
-                            <p class="node-description text-sm opacity-80 leading-snug">This project is temporarily offline. Support on Ko-fi helps bring the table back online.</p>
                         </div>
                     </div>
                 </a>
@@ -2158,7 +2325,6 @@
             class="main-container flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-bold tracking-[0.2em] uppercase">
             <p>&copy; 2026 Arcana Studio Labs</p>
             <p style="color: var(--text-dim);">Signal-rich portals for knowledge, ritual, and play</p>
-            <p>© 2026 ARCANA STUDIO LABS</p>
         </div>
     </footer>
 
@@ -2218,29 +2384,27 @@
         }
 
         const phrases = [
-            "THE_VOIDS_ARCANA // ROYAL ROAD SERIAL LIVE",
+            "ASL_BLACKJACK_LOUNGE // EXPANSION TABLES LIVE",
+            "ASL_BASEMENT_POKER // TABLES BACK ONLINE",
             "LUMENPEDIA_PROTOCOLS // MASTERING THE VIRTUAL",
             "THE_CODEX_OF_THE_WITCH // DECODING THE SOUL",
             "FIRE_HORSE_2026 // OPTIMIZING CELESTIAL FLOW",
-            "ASL_BASEMENT_POKER // RELAUNCH PENDING SUPPORT",
-            "GRAND_CODEX // OFFLINE NPC ARCHIVE",
-            "MAZE_WARRIOR // HOSTING PAUSED FOR NOW",
+            "MAZE_WARRIOR // PAUSED PENDING RELAUNCH SUPPORT",
             "ARCANA_STUDIO // MASTERING THE MECHANICS"
         ];
 
         const dashboardState = {
-            latestNode: "The Void's Arcana",
+            latestNode: "ASL BlackJack Lounge",
             metrics: [
                 { label: "Launch Stack", value: "00 Nodes" },
-                { label: "Newest Signal", value: "The Void's Arcana" },
+                { label: "Newest Signal", value: "BlackJack Expansion" },
                 { label: "Core State", value: "Stable", accent: true }
             ],
             operations: [
-                { label: "VOIDS_ARCANA_ROYALROAD_LIVE", date: "04.18" },
-                { label: "GRAND_CODEX_STORE_LIVE", date: "04.07" },
-                { label: "MAZE_WARRIOR_RELAUNCH_PENDING", date: "SUPPORT" },
-                { label: "BASEMENT_POKER_RELAUNCH_PENDING", date: "SUPPORT" },
+                { label: "BLACKJACK_LOUNGE_EXPANSION_LIVE", date: "NOW" },
+                { label: "BASEMENT_POKER_TABLES_REOPENED", date: "LIVE" },
                 { label: "LUMENPEDIA_PATCH_SYNC", date: "02.16" },
+                { label: "MAZE_WARRIOR_RELAUNCH_PENDING", date: "SUPPORT" },
                 { label: "FIRE_HORSE_FLOW_READY", date: "02.14" },
                 { label: "ENGINE STATUS", value: "STABLE", accent: true }
             ]
@@ -2392,7 +2556,7 @@
             }
         }
 
-        // --- 5. FLOATING BUTTONS — app deep-link on mobile ---
+        // --- 5. FLOATING BUTTONS - app deep-link on mobile ---
         ['donateBtn', 'discordBtn'].forEach(function(id) {
             document.getElementById(id).addEventListener('click', function (e) {
                 if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
