@@ -13,11 +13,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arcana Studio Labs</title>
     <meta name="description"
-        content="Arcana Studio Labs is a portal for strategy engines, symbolic tools, seasonal guides, and side-quest experiments.">
+        content="Arcana Studio Labs is a portal for ASL casino games, strategy engines, symbolic tools, seasonal guides, and side-quest experiments.">
     <meta name="theme-color" content="#020617">
     <meta property="og:title" content="Arcana Studio Labs">
     <meta property="og:description"
-        content="Signal-rich portals for knowledge, ritual, and play across the Arcana Studio Labs network.">
+        content="ASL Baccarat joins the casino network alongside Poker, BlackJack Lounge, knowledge tools, and symbolic portals.">
     <meta property="og:type" content="website">
     <link rel="icon" type="image/png" href="logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -566,6 +566,15 @@
                 var(--card-bg);
         }
 
+        .flagship-card.is-baccarat {
+            min-height: 300px;
+            border-color: rgba(214, 173, 72, 0.36);
+            background:
+                radial-gradient(circle at 78% 18%, rgba(214, 173, 72, 0.24), transparent 34%),
+                radial-gradient(circle at 20% 82%, rgba(16, 185, 129, 0.18), transparent 32%),
+                var(--card-bg);
+        }
+
         .flagship-head {
             position: relative;
             z-index: 1;
@@ -642,7 +651,8 @@
             color: #f8f7ff;
         }
 
-        .flagship-card.is-blackjack .flagship-title {
+        .flagship-card.is-blackjack .flagship-title,
+        .flagship-card.is-baccarat .flagship-title {
             font-size: clamp(1.6rem, 3vw, 2.35rem);
         }
 
@@ -721,6 +731,11 @@
             box-shadow: 0 0 0 1px rgba(245, 199, 109, 0.24), 0 18px 42px rgba(245, 199, 109, 0.16);
         }
 
+        .project-card.is-baccarat-node {
+            border-color: rgba(214, 173, 72, 0.6);
+            box-shadow: 0 0 0 1px rgba(214, 173, 72, 0.24), 0 18px 42px rgba(16, 185, 129, 0.14);
+        }
+
         .project-card.is-poker-node {
             border-color: rgba(45, 212, 191, 0.54);
             box-shadow: 0 0 0 1px rgba(45, 212, 191, 0.22), 0 18px 42px rgba(45, 212, 191, 0.14);
@@ -759,6 +774,11 @@
         .project-card.is-casino-node .node-logo-frame {
             border-color: rgba(245, 199, 109, 0.42);
             box-shadow: 0 0 28px rgba(245, 199, 109, 0.2);
+        }
+
+        .project-card.is-baccarat-node .node-logo-frame {
+            border-color: rgba(214, 173, 72, 0.46);
+            box-shadow: 0 0 28px rgba(214, 173, 72, 0.2);
         }
 
         .project-card.is-poker-node .node-logo-frame {
@@ -1914,7 +1934,8 @@
             }
 
             .flagship-card,
-            .flagship-card.is-blackjack {
+            .flagship-card.is-blackjack,
+            .flagship-card.is-baccarat {
                 min-height: 250px;
             }
 
@@ -2077,13 +2098,13 @@
                             </div>
                             <div class="console-row">
                                 <span class="console-key">Latest Node</span>
-                                <span class="console-val" id="latestNodeName">ASL BlackJack Lounge</span>
+                                <span class="console-val" id="latestNodeName">ASL Baccarat Lounge</span>
                             </div>
                         </div>
                         <div class="hero-scan">
                             <div class="scan-title">Surface Scan</div>
                             <p class="scan-copy">
-                                From ASL BlackJack Lounge and Basement Poker to Jade Dynasty tooling, symbolic cartography,
+                                From ASL Baccarat Lounge, BlackJack Lounge, and Basement Poker to Jade Dynasty tooling, symbolic cartography,
                                 and seasonal guides, the Arcana layer is built to feel like a living switchboard while Maze Warrior waits for its relaunch window.
                             </p>
                         </div>
@@ -2094,6 +2115,24 @@
 
         <div class="main-container mb-16 w-full">
             <section class="flagship-showcase" aria-label="Featured Arcana live nodes">
+                <a class="glass-card flagship-card is-baccarat" style="--card-accent: #d6ad48;"
+                    href="https://basement-poker.arcanastudiolabs.com/baccarat" target="_blank" rel="noopener"
+                    aria-label="Enter ASL Baccarat Lounge">
+                    <div class="flagship-head">
+                        <div class="flagship-logo is-cover">
+                            <img src="asl-baccarat-poster.png" alt="ASL Baccarat Lounge" onerror="handleImageError(this)">
+                        </div>
+                        <span class="flagship-pill">New Project</span>
+                    </div>
+                    <div class="flagship-copy">
+                        <h2 class="flagship-title brand-font">ASL Baccarat Lounge</h2>
+                        <p class="flagship-text">
+                            Punto Banco joins the ASL casino account system with 100-10,000 table stakes.
+                        </p>
+                        <span class="flagship-cta"><i class="fa-solid fa-crown"></i> Enter Baccarat</span>
+                    </div>
+                </a>
+
                 <a class="glass-card flagship-card is-blackjack" style="--card-accent: #f5c76d;"
                     href="https://basement-poker.arcanastudiolabs.com/blackjack" target="_blank" rel="noopener"
                     aria-label="Enter ASL BlackJack Lounge">
@@ -2106,7 +2145,7 @@
                     <div class="flagship-copy">
                         <h2 class="flagship-title brand-font">ASL BlackJack Lounge</h2>
                         <p class="flagship-text">
-                            The new table expansion is open inside the same player account system as Basement Poker.
+                            The dealer-table expansion runs on the same shared casino profile and chip system.
                         </p>
                         <span class="flagship-cta"><i class="fa-solid fa-diamond"></i> Enter Blackjack</span>
                     </div>
@@ -2124,27 +2163,9 @@
                     <div class="flagship-copy">
                         <h2 class="flagship-title brand-font">ASL Basement Poker</h2>
                         <p class="flagship-text">
-                            The poker room is back with shared profiles, chips, tables, chat, and the new blackjack path.
+                            Basement Poker anchors the ASL casino with shared profiles, chips, table chat, and live rooms.
                         </p>
                         <span class="flagship-cta"><i class="fa-solid fa-spade"></i> Enter Poker</span>
-                    </div>
-                </a>
-
-                <a class="glass-card flagship-card" style="--card-accent: #34d399;"
-                    href="https://lumenpedia.arcanastudiolabs.com/" target="_blank" rel="noopener"
-                    aria-label="Open Lumenpedia">
-                    <div class="flagship-head">
-                        <div class="flagship-logo">
-                            <img src="lumen-logo.png" alt="Lumenpedia" onerror="handleImageError(this)">
-                        </div>
-                        <span class="flagship-pill">Strategy Engine</span>
-                    </div>
-                    <div class="flagship-copy">
-                        <h2 class="flagship-title brand-font">Lumenpedia</h2>
-                        <p class="flagship-text">
-                            Jade Dynasty Lumen references, technical guides, and player tools remain a core Arcana node.
-                        </p>
-                        <span class="flagship-cta"><i class="fa-solid fa-database"></i> Open Lumenpedia</span>
                     </div>
                 </a>
             </section>
@@ -2152,9 +2173,9 @@
             <section class="glass-card support-status-banner" id="support-panel" aria-labelledby="supportStatusTitle">
                 <div class="support-status-copy">
                     <div class="support-status-kicker">Service Update</div>
-                    <h2 class="support-status-title brand-font" id="supportStatusTitle">Basement Poker is back, with Blackjack Lounge now open</h2>
+                    <h2 class="support-status-title brand-font" id="supportStatusTitle">ASL Baccarat is live in the casino lobby</h2>
                     <p class="support-status-text">
-                        Poker has reopened, and the new ASL BlackJack Lounge expands the same account-and-profile experience.
+                        Baccarat now joins Poker and BlackJack Lounge inside the same account-and-profile experience.
                         Support helps keep the rooms running and gives development room to continue without slowing the tables down.
                     </p>
                 </div>
@@ -2162,6 +2183,10 @@
                     <a class="support-status-link" href="https://basement-poker.arcanastudiolabs.com/" target="_blank" rel="noopener">
                         <i class="fa-solid fa-spade"></i>
                         Enter Poker
+                    </a>
+                    <a class="support-status-link" href="https://basement-poker.arcanastudiolabs.com/baccarat" target="_blank" rel="noopener">
+                        <i class="fa-solid fa-crown"></i>
+                        Enter Baccarat
                     </a>
                     <a class="support-status-cta" href="https://ko-fi.com/eunicecheng" target="_blank" rel="noopener">
                         <i class="fa-solid fa-mug-hot"></i>
@@ -2175,11 +2200,33 @@
             </section>
 
             <div class="card-grid">
+                <!-- ASL Baccarat Lounge Card - Links to the new baccarat room -->
+                <a class="glass-card card project-card reveal project-link is-baccarat-node" style="--card-accent: #d6ad48;"
+                    href="https://basement-poker.arcanastudiolabs.com/baccarat" target="_blank" rel="noopener"
+                    aria-label="Enter ASL Baccarat Lounge">
+                    <span class="node-corner-badge premium"><i class="fa-solid fa-crown"></i> NEW</span>
+                    <div class="node-inner">
+                        <div class="node-logo-frame">
+                            <img id="baccaratLogo" src="asl-baccarat-logo.png" alt="ASL Baccarat Lounge" class="node-logo"
+                                onerror="handleImageError(this)">
+                        </div>
+                        <div class="node-text">
+                            <span class="card-kicker">Casino Lounge Project</span>
+                            <h2 class="text-xl font-bold brand-font mb-1">ASL Baccarat Lounge</h2>
+                            <div class="node-meta">
+                                <span class="node-badge is-live">Live</span>
+                                <span class="node-badge muted">Punto Banco</span>
+                            </div>
+                            <p class="node-description text-sm opacity-80 leading-snug">A new Baccarat room connected to the ASL casino account, profile, and chip system.</p>
+                        </div>
+                    </div>
+                </a>
+
                 <!-- ASL BlackJack Lounge Card - Links to the blackjack expansion -->
                 <a class="glass-card card project-card reveal project-link is-casino-node" style="--card-accent: #f5c76d;"
                     href="https://basement-poker.arcanastudiolabs.com/blackjack" target="_blank" rel="noopener"
                     aria-label="Enter ASL BlackJack Lounge">
-                    <span class="node-corner-badge premium"><i class="fa-solid fa-diamond"></i> NEW</span>
+                    <span class="node-corner-badge premium"><i class="fa-solid fa-diamond"></i> LIVE</span>
                     <div class="node-inner">
                         <div class="node-logo-frame">
                             <img id="blackjackLogo" src="asl-blackjack-logo.png" alt="ASL BlackJack Lounge" class="node-logo"
@@ -2384,6 +2431,7 @@
         }
 
         const phrases = [
+            "ASL_BACCARAT_LOUNGE // PUNTO_BANCO_TABLES_LIVE",
             "ASL_BLACKJACK_LOUNGE // EXPANSION TABLES LIVE",
             "ASL_BASEMENT_POKER // TABLES BACK ONLINE",
             "LUMENPEDIA_PROTOCOLS // MASTERING THE VIRTUAL",
@@ -2394,13 +2442,14 @@
         ];
 
         const dashboardState = {
-            latestNode: "ASL BlackJack Lounge",
+            latestNode: "ASL Baccarat Lounge",
             metrics: [
                 { label: "Launch Stack", value: "00 Nodes" },
-                { label: "Newest Signal", value: "BlackJack Expansion" },
+                { label: "Newest Signal", value: "Baccarat Launch" },
                 { label: "Core State", value: "Stable", accent: true }
             ],
             operations: [
+                { label: "BACCARAT_PUNTO_BANCO_TABLES_LIVE", date: "NEW" },
                 { label: "BLACKJACK_LOUNGE_EXPANSION_LIVE", date: "NOW" },
                 { label: "BASEMENT_POKER_TABLES_REOPENED", date: "LIVE" },
                 { label: "LUMENPEDIA_PATCH_SYNC", date: "02.16" },
