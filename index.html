@@ -605,6 +605,19 @@
             filter: drop-shadow(0 14px 24px rgba(2, 8, 23, 0.32));
         }
 
+        .flagship-card.is-baccarat .flagship-logo {
+            width: 8.25rem;
+            height: 8.25rem;
+            border-radius: 1.35rem;
+        }
+
+        .flagship-card.is-baccarat .flagship-logo img {
+            width: 132%;
+            height: 132%;
+            max-width: none;
+            padding: 0;
+        }
+
         .flagship-logo.is-cover img {
             padding: 0;
             object-fit: cover;
@@ -777,6 +790,8 @@
         }
 
         .project-card.is-baccarat-node .node-logo-frame {
+            width: 132px;
+            height: 132px;
             border-color: rgba(214, 173, 72, 0.46);
             box-shadow: 0 0 28px rgba(214, 173, 72, 0.2);
         }
@@ -903,6 +918,18 @@
             transition: opacity 0.3s ease, transform 0.35s ease, filter 0.35s ease;
             filter: drop-shadow(0 12px 20px rgba(2, 8, 23, 0.22));
             padding: 0.5rem;
+        }
+
+        .project-card.is-baccarat-node .node-inner {
+            grid-template-columns: 132px minmax(0, 1fr);
+            gap: 1.35rem;
+        }
+
+        .project-card.is-baccarat-node .node-logo {
+            width: 136%;
+            height: 136%;
+            max-width: none;
+            padding: 0;
         }
 
         .node-logo-cover {
@@ -1944,6 +1971,11 @@
                 height: 5rem;
             }
 
+            .flagship-card.is-baccarat .flagship-logo {
+                width: 6.25rem;
+                height: 6.25rem;
+            }
+
             .card {
                 min-height: auto;
             }
@@ -1969,6 +2001,16 @@
             .node-logo-frame {
                 width: 84px;
                 height: 84px;
+            }
+
+            .project-card.is-baccarat-node .node-inner {
+                grid-template-columns: 104px minmax(0, 1fr);
+                gap: 1rem;
+            }
+
+            .project-card.is-baccarat-node .node-logo-frame {
+                width: 104px;
+                height: 104px;
             }
 
             .top-logo {
